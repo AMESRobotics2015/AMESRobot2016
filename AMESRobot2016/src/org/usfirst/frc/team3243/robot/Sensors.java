@@ -4,11 +4,15 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 
 public class Sensors {
-	
-	public Sensors(){
-		USBCamera cam = new USBCamera();
-		cam.openCamera();
-		cam.startCapture();
+	protected static USBCamera watch;
+	public Sensors ()
+	{
+		USBCamera watch = new USBCamera();
+	}
+	public void startJoshFace()
+	{
+		watch.openCamera();
+		watch.startCapture();
 		//cam.
 	}
 }

@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto choices", chooser);
         IM = new InputManager();
         MC = new MotorControl();
+        S = new Sensors();
     }
     
 	/**
