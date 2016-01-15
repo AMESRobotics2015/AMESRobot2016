@@ -11,8 +11,16 @@ public class Sensors {
 	}
 	public void startJoshFace()
 	{
+		Timer Josh = new Timer();
+		do
+		{
 		watch.openCamera();
 		watch.startCapture();
+		
+		Josh.start();
+		}
+		while (Josh.get()< 20);
+		watch.stopCapture();
 		//cam.
 	}
 }
