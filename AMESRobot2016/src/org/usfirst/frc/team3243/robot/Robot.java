@@ -20,7 +20,7 @@ public class Robot extends IterativeRobot {
     SendableChooser chooser;
     InputManager IM;
     MotorControl MC;
-
+    Sensors S;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -33,7 +33,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto choices", chooser);
         IM = new InputManager();
         MC = new MotorControl();
-
     }
     
 	/**
