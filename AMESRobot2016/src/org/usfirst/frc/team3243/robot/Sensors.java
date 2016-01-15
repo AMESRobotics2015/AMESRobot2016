@@ -9,6 +9,6 @@ public class Sensors {
 		USBCamera cam = new USBCamera();
 		cam.openCamera();
 		cam.startCapture();
-		cam.
+		//cam.
 	}
 }
