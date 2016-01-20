@@ -64,6 +64,12 @@ public class Robot extends IterativeRobot {
     	//Put default auto code here
             break;
     	}
+    	do 
+    	{
+    		double drive[] = {1,-1};
+    		MC.drive(drive);
+    	}
+    	while (S.encoderCount(50));
     }
 
     /**
