@@ -7,7 +7,7 @@ public class InputManager {
 	double[] in = new double[2];
 	
 	double[] input() {
-		in[0] = ramp(deadZone(move.getRawAxis(0)));
+		in[0] = ramp(deadZone(move.getRawAxis(1)));
 		in[1] = ramp(deadZone(move.getRawAxis(3)));
 		
 		return in;

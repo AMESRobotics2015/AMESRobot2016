@@ -8,17 +8,10 @@ public class MotorControl {
 	Victor cim3 = new Victor(2);
 	Victor cim4 = new Victor (3);
 	
-	void drivefw(double[] drv){
+	void drive(double[] drv){
 		cim1.set(drv[1]);
 		cim2.set(drv[1]);
-		cim3.set(drv[1]);
-		cim4.set(drv[1]);
-	}
-	
-	void drivsw(double[] drv){
-		cim1.set(drv[0]);
-		cim2.set(drv[0]);
-		cim3.set(-drv[0]);
-		cim4.set(-drv[0]);
+		cim3.set(drv[0]);
+		cim4.set(drv[0]);
 	}
 }

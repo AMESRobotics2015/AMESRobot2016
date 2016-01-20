@@ -71,8 +71,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
     	S.startJoshFace();
-    	//MC.drivefw(IM.input());
-    	//MC.drivsw(IM.input());
+    	MC.drive(IM.input());
     }
     
     /**
