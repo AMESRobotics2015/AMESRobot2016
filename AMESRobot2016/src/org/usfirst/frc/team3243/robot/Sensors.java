@@ -46,6 +46,7 @@ public class Sensors {
 	 */
 	public boolean encoderCount(double cycles)
 	{
+		//As per the javadoc comment above, this needs to be altered slightly.
 		Rotations.reset();
 		while(Rotations.get() < cycles)
 		{
@@ -53,5 +54,26 @@ public class Sensors {
 		return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * This method will get the feedback from the gyro to be used elswhere.
+	 */
+	public void gyroFeed(){
+		//Put code here - will have to change the return and possibly params.
+	}
+	
+	/**
+	 * Not sure we'll need this but its here in case - this method will allow us to get information from camera hooked up - this is vision processing.
+	 */
+	public void vision(){
+		
+	}
+	
+	/**
+	 * This method will take input from the encoders and use it to correct the movement to what it should actually be.
+	 */
+	public void correction(){
+		
 	}
 }

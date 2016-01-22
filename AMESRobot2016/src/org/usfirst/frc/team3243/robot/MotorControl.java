@@ -23,4 +23,11 @@ public class MotorControl {
 		cim3.set(drv[0]);
 		cim4.set(drv[0]);
 	}
+	
+	/**
+	 * Method for inputting values from input manager for gamepiece. NOTE: We may need to make more of these depending upon the final design.
+	 */
+	void gameMotor(){
+		
+	}
 }

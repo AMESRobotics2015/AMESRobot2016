@@ -60,5 +60,20 @@ public class InputManager {
 		}
 		return input;
 	}
+	
+	/**
+	 * Much like above, this will allow us to get an axis reading if need be for a gamepiece.
+	 */
+	public void gameRawAxisGet(){
+		
+	}
+	
+	/**
+	 * Read button presses as user input.
+	 */
+	public void gameButtons(){
+		
+	}
+	
 
 }
