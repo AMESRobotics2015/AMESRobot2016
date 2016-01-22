@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 public class Sensors {
 	protected static USBCamera watch;
 	protected static Encoder Rotations;
-	
+	protected static AnalogGyro Direction;
 	/**
 	 * Constructor to set up our various sensors.
 	 */
@@ -19,6 +19,7 @@ public class Sensors {
 	{
 		USBCamera watch = new USBCamera();
 		Encoder Rotations  = new Encoder(null, null);
+		AnalogGyro Direction = new AnalogGyro(2);;
 	}
 	
 	/**
@@ -59,8 +60,13 @@ public class Sensors {
 	/**
 	 * This method will get the feedback from the gyro to be used elswhere.
 	 */
-	public void gyroFeed(){
+	public double gyroFeed(boolean reset){
 		//Put code here - will have to change the return and possibly params.
+		if (reset)
+		{
+			Direction.reset();
+		}
+		return Direction.getAngle();
 	}
 	
 	/**
