@@ -27,6 +27,7 @@ public class Sensors {
 	 */
 	public void startCamera()
 	{
+		watch.openCamera();
 		watch.startCapture();
 	}
 	
