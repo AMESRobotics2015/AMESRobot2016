@@ -26,15 +26,15 @@ public class Sensors {
 	 */
 	public void startCamera()
 	{
-		Timer Josh = new Timer();
+		Timer watchFor = new Timer();
 		do
 		{
 		watch.openCamera();
 		watch.startCapture();
 		
-		Josh.start();
+		watchFor.start();
 		}
-		while (Josh.get()< 20);
+		while (watchFor.get()< 20);
 		watch.stopCapture();
 		//cam.
 	}
