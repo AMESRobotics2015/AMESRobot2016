@@ -2,16 +2,31 @@ package org.usfirst.frc.team3243.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 
+/**
+ * This class contains our methods/functions relating to the Input of information from our user.
+ * @author markvandermerwe
+ *
+ */
 public class InputManager {
 	Joystick move = new Joystick(0);
 	double[] in = new double[2];
 	
+	/**
+	 * Method that will return the final drive array to be sent to the motor control class.
+	 * @return
+	 */
 	double[] input() {
 		in[0] = ramp(deadZone(move.getRawAxis(1)));
 		in[1] = ramp(deadZone(move.getRawAxis(3)));
 		
 		return in;
 	}
+	
+	/**
+	 * This method deadzones the user's inputs- it makes sure that if the controller isn't being pushed, the bot doesn't start moving because of arbitrary joystick movements.
+	 * @param input - input value from the user.
+	 * @return returns the value as it was unless it is too small to be considered.
+	 */
 	double deadZone(double input) {
 		double deadRange = 0.01;
 		if (Math.abs(input)<deadRange) {
@@ -19,6 +34,12 @@ public class InputManager {
 		}
 		return input;
 	}
+	
+	/**
+	 * This method ramps the inputs from the user so that it feels smoother to the driver.
+	 * @param input - input value from the user after it was deadzoned.
+	 * @return returns a ramped value.
+	 */
 	double ramp(double input){
 		if (move.getRawButton(13)) {
 			input = Math.pow(input, 3)/3;
