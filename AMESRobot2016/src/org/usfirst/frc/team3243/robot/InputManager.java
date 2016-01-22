@@ -52,7 +52,7 @@ public class InputManager {
 	 * @return returns a ramped value.
 	 */
 	double ramp(double input){
-		if (move.getRawButton(13)) {
+		if (move.getRawButton(8)) {
 			input = Math.pow(input, 3)/3;
 		}
 		else {
