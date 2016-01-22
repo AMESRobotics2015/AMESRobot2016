@@ -19,7 +19,7 @@ public class Sensors {
 	{
 		watch = new USBCamera();
 		// Rotations  = new Encoder(null, null);
-		Direction = new AnalogGyro(2);
+		Direction = new AnalogGyro(0);
 	}
 	
 	/**
