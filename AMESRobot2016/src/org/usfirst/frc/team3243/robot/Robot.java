@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	S.startJoshFace();
+    	S.startCamera();
     	MC.drive(IM.input());
     }
     
