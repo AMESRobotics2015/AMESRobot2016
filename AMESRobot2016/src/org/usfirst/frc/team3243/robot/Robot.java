@@ -64,19 +64,20 @@ public class Robot extends IterativeRobot {
     	//Put default auto code here
             break;
     	}
-    	do 
+    	/*do 
     	{
     		double drive[] = {1,-1};
     		MC.drive(drive);
     	}
     	while (S.encoderCount(50));
+    	*/
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	S.startCamera();
+    	//S.startCamera();
     	MC.drive(IM.input());
     	S.gyroFeed(false);
     }
