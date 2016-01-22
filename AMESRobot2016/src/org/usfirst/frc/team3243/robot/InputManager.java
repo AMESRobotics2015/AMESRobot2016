@@ -16,9 +16,20 @@ public class InputManager {
 	 * @return
 	 */
 	double[] input() {
-		in[0] = ramp(deadZone(move.getRawAxis(1)));
-		in[1] = ramp(deadZone(move.getRawAxis(3)));
+		in = rawAxisGet();
+		in[0] = ramp(deadZone(in[0]));
+		in[1] = ramp(deadZone(in[1]));
 		
+		return in;
+	}
+	
+	/**
+	 * This method gets the raw data back from the joysticks to be used in other parts of the code.
+	 * @return
+	 */
+	double[] rawAxisGet(){
+		in[0] = move.getRawAxis(1);
+		in[1] = move.getRawAxis(3);
 		return in;
 	}
 	
