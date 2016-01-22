@@ -18,8 +18,8 @@ public class Sensors {
 	public Sensors ()
 	{
 		USBCamera watch = new USBCamera();
-		Encoder Rotations  = new Encoder(null, null);
-		AnalogGyro Direction = new AnalogGyro(2);;
+		// Rotations  = new Encoder(null, null);
+		AnalogGyro Direction = new AnalogGyro(2);
 	}
 	
 	/**
@@ -48,13 +48,15 @@ public class Sensors {
 	public boolean encoderCount(double cycles)
 	{
 		//As per the javadoc comment above, this needs to be altered slightly.
-		Rotations.reset();
+		/*Rotations.reset();
 		while(Rotations.get() < cycles)
 		{
 			System.out.println(Rotations.get());
 		return false;
 		}
+		*/
 		return true;
+		
 	}
 	
 	/**
