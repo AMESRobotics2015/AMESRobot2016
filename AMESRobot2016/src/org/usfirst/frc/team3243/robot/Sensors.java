@@ -58,8 +58,13 @@ public class Sensors {
 		{
 			Direction.reset();
 		}
-		System.out.println("Direction Center: " + Direction.getCenter());
-		System.out.println("Current Angle: " + Direction.getAngle());
+		//System.out.println("Direction Center: " + Direction.getCenter());
+		//System.out.println("Current Angle: " + Direction.getAngle());
+		System.out.println( Direction.getAngle());
+		if (128 < Direction.getAngle() && Direction.getAngle()< 132)
+		{
+		System.out.println( "DONE");
+		}
 		return Direction.getAngle();
 	}
 	
