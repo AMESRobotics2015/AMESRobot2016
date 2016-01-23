@@ -2,6 +2,7 @@ package org.usfirst.frc.team3243.robot;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.vision.USBCamera;
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 /**
  * This class contains all the classes having to do with the various sensors (camera, encoder, accelerometer, etc.) we might end up using.
@@ -20,6 +21,8 @@ public class Sensors {
 		watch = new USBCamera();
 		// Rotations  = new Encoder(null, null);
 		Direction = new AnalogGyro(0);
+		Direction.initGyro();
+		Direction.calibrate();
 	}
 	
 	/**
@@ -46,8 +49,7 @@ public class Sensors {
 		return false;
 		}
 		*/
-		return true;
-		
+		return true;		
 	}
 	
 	/**
@@ -59,6 +61,8 @@ public class Sensors {
 		{
 			Direction.reset();
 		}
+		System.out.print("Direction Center: " + Direction.getCenter());
+		System.out.print("Current Angle: " + Direction.getAngle());
 		return Direction.getAngle();
 	}
 	
