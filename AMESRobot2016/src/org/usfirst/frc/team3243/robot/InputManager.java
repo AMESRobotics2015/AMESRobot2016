@@ -74,6 +74,4 @@ public class InputManager {
 	public void gameButtons(){
 		
 	}
-	
-
 }
