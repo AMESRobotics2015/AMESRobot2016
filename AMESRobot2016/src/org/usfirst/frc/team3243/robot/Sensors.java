@@ -39,17 +39,13 @@ public class Sensors {
 	 * @param cycles
 	 * @return
 	 */
-	public boolean encoderCount(double cycles)
+	public double encoderCount()
 	{
+		double num = 0;//Use this as the # encoder count.
 		//As per the javadoc comment above, this needs to be altered slightly.
-		/*Rotations.reset();
-		while(Rotations.get() < cycles)
-		{
-			System.out.println(Rotations.get());
-		return false;
-		}
-		*/
-		return true;		
+		Rotations.reset();
+		Rotations.get();
+		return num;
 	}
 	
 	/**

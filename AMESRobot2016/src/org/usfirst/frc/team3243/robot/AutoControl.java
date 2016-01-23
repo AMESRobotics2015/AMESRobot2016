@@ -10,8 +10,9 @@ public class AutoControl {
 	/**
 	 * This method will take in a distance and be able to make the robot move that using feed from the encoders.
 	 */
-	public void move(){
-		
+	public double moveCalc(double dist, double circ){
+		double ticks = 0;
+		return ticks;
 	}
 	
 	/**

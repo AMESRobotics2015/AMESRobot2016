@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
     InputManager IM;
     MotorControl MC;
     Sensors S;
+    AutoControl A;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -34,6 +35,7 @@ public class Robot extends IterativeRobot {
         IM = new InputManager();
         MC = new MotorControl();
         S = new Sensors();
+        A = new AutoControl();
     }
     
 	/**
@@ -64,13 +66,13 @@ public class Robot extends IterativeRobot {
     	//Put default auto code here
             break;
     	}
-    	/*do 
-    	{
-    		double drive[] = {1,-1};
-    		MC.drive(drive);
+    	while(S.encoderCount() < A.moveCalc(0.0,0.0)){//This will be able to drive us forward a distance we tell it. Copy and paste as needed.
+    	    double[] in = new double[2];
+    	    in[0] = 0.7;
+    	    in[1] = 0.7;
+    	    MC.drive(in);
     	}
-    	while (S.encoderCount(50));
-    	*/
+    	//while(S.gyroFeed(reset))
     }
 
     /**
