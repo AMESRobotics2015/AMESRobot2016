@@ -75,7 +75,8 @@ public class Robot extends IterativeRobot {
 
     /**
      * This function is called periodically during operator control
-     */
+     * Press the y button to reset the gyro value; in other words, set the direction the robot is currently facing as 0
+     * */
     public void teleopPeriodic() {
     	//S.startCamera();
     	MC.drive(IM.input());
