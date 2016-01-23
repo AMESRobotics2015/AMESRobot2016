@@ -61,8 +61,8 @@ public class Sensors {
 		{
 			Direction.reset();
 		}
-		System.out.print("Direction Center: " + Direction.getCenter());
-		System.out.print("Current Angle: " + Direction.getAngle());
+		System.out.println("Direction Center: " + Direction.getCenter());
+		System.out.println("Current Angle: " + Direction.getAngle());
 		return Direction.getAngle();
 	}
 	
