@@ -18,7 +18,7 @@ public class AutoControl {
 	/**
 	 * This method will take in a degree and be able to make the robot rotate that using feed from the encoders.
 	 */
-	public void rotate(){
+	public void rotate(double angle, double circ){
 		
 	}
 	

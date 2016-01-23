@@ -21,7 +21,10 @@ public class Robot extends IterativeRobot {
     InputManager IM;
     MotorControl MC;
     Sensors S;
+    RobotMap RM;
     AutoControl A;
+    double degree;
+    double distance;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -36,6 +39,7 @@ public class Robot extends IterativeRobot {
         MC = new MotorControl();
         S = new Sensors();
         A = new AutoControl();
+        RM = new RobotMap();
     }
     
 	/**
@@ -66,13 +70,25 @@ public class Robot extends IterativeRobot {
     	//Put default auto code here
             break;
     	}
-    	while(S.encoderCount() < A.moveCalc(0.0,0.0)){//This will be able to drive us forward a distance we tell it. Copy and paste as needed.
+    	/*
+    	//This will be able to drive us forward a distance we tell it. Copy and paste as needed.
+    	while(S.encoderCount() < A.moveCalc(distance,RM.circ)){
     	    double[] in = new double[2];
     	    in[0] = 0.7;
     	    in[1] = 0.7;
     	    MC.drive(in);
     	}
-    	//while(S.gyroFeed(reset))
+    	*/
+    	
+    	//This will be able to turn us a degree we tell it. Copy and paste as needed.
+    	S.gyroFeed(true);
+    	while(S.gyroFeed(false) < degree){
+    		double[] in = new double[2];
+    	    in[0] = 0.7;
+    	    in[1] = -0.7;
+    	    MC.drive(in);
+    	}
+    	
     }
 
     /**
