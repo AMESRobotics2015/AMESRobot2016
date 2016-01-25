@@ -13,11 +13,13 @@ public class Sensors {
 	protected static USBCamera watch;
 	protected static Encoder Rotations;
 	protected static AnalogGyro Direction;
+	protected static CameraServer camera;
 	/**
 	 * Constructor to set up our various sensors.
 	 */
 	public Sensors ()
 	{
+	
 		watch = new USBCamera();
 		// Rotations  = new Encoder(null, null);
 		Direction = new AnalogGyro(0);
@@ -30,8 +32,8 @@ public class Sensors {
 	 */
 	public void startCamera()
 	{
-		watch.openCamera();
-		watch.startCapture();
+		camera.setQuality(50);
+		camera.startAutomaticCapture();
 	}
 	
 	/**
