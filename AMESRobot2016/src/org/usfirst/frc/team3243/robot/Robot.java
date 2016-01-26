@@ -118,6 +118,16 @@ public class Robot extends IterativeRobot {
     	} else {
     		S.gyroFeed(false);
     	}
+    	int ballDir = (IM.move.getRawButton(1)?MotorControl.CARRY_IN:MotorControl.CARRY_STOP);
+    	if (IM.move.getRawButton(2)) {
+    		if (ballDir == MotorControl.CARRY_IN) {
+    			ballDir = MotorControl.CARRY_STOP;
+    		}
+    		else {
+    			ballDir = MotorControl.CARRY_OUT;
+    		}
+    	}
+    	MC.ballCarrier(ballDir);
     }
     
     /**
