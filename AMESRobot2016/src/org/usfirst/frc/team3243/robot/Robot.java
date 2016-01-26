@@ -1,8 +1,11 @@
 
 package org.usfirst.frc.team3243.robot;
 
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -25,6 +28,11 @@ public class Robot extends IterativeRobot {
     AutoControl A;
     double degree;
     double distance;
+    private static final String[] GRIP_ARGS = new String[] {
+    	"/usr/local/frc/JRE/bin/java","-jar","/home/lvuser/grip.jar",
+    	"/home/lvuser/FindBoulder.grip"
+    };
+    private final NetworkTable grip = NetworkTable.getTable("grip");
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -40,6 +48,12 @@ public class Robot extends IterativeRobot {
         S = new Sensors();
         A = new AutoControl();
         RM = new RobotMap();
+        try{
+        	Runtime.getRuntime().exec(GRIP_ARGS)
+        }
+        catch (IOException e){
+        	e.printStackTrace();
+        }
     }
     
 	/**
@@ -61,6 +75,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+    	//grip.getNumberArray() to get contour report
     	switch(autoSelected) {
     	case customAuto:
         //Put custom auto code here   
