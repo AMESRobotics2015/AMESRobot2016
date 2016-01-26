@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
         A = new AutoControl();
         RM = new RobotMap();
         try{
-        	Runtime.getRuntime().exec(GRIP_ARGS)
+        	Runtime.getRuntime().exec(GRIP_ARGS);
         }
         catch (IOException e){
         	e.printStackTrace();
