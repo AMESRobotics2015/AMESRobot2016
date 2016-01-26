@@ -75,7 +75,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-    	//grip.getNumberArray() to get contour report
+    	//grip.getNumberArray("FindBoulder/area",double[]) to get contour areas
     	switch(autoSelected) {
     	case customAuto:
         //Put custom auto code here   
