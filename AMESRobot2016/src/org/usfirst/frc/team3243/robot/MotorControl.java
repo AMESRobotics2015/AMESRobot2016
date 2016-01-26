@@ -27,7 +27,7 @@ public class MotorControl {
 	/**
 	 * Method for inputting values from input manager for gamepiece. NOTE: We may need to make more of these depending upon the final design.
 	 */
-	void gameMotor(){
+	void grabber(){
 		
 	}
 }

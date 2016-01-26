@@ -69,9 +69,9 @@ public class InputManager {
 	}
 	
 	/**
-	 * Read button presses as user input.
+	 * Read button presses as user input - grabber.
 	 */
-	public void gameButtons(){
+	public void grabberInput(){
 		
 	}
 }
