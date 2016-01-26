@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
  *
  */
 public class Sensors {
-	protected static USBCamera watch;
+	//protected static USBCamera watch;
 	protected static Encoder Rotations;
 	protected static AnalogGyro Direction;
 	protected static CameraServer camera;
@@ -19,8 +19,8 @@ public class Sensors {
 	 */
 	public Sensors ()
 	{
-	
-		watch = new USBCamera();
+		camera = CameraServer.getInstance();
+		//watch = new USBCamera();
 		// Rotations  = new Encoder(null, null);
 		Direction = new AnalogGyro(0);
 		Direction.initGyro();
@@ -33,7 +33,7 @@ public class Sensors {
 	public void startCamera()
 	{
 		camera.setQuality(50);
-		camera.startAutomaticCapture();
+		camera.startAutomaticCapture("cam1");
 	}
 	
 	/**
