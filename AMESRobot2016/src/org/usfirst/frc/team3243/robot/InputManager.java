@@ -62,16 +62,13 @@ public class InputManager {
 	}
 	
 	/**
-	 * Much like above, this will allow us to get an axis reading if need be for a gamepiece.
+	 * Read button presses as user input - grabber.
 	 */
-	public void gameRawAxisGet(){
+	public void armInput(){
 		
 	}
 	
-	/**
-	 * Read button presses as user input - grabber.
-	 */
-	public void grabberInput(){
+	public void climberInput(){
 		
 	}
 }

@@ -27,7 +27,7 @@ public class MotorControl {
 		cim4.set(drv[0]);
 	}
 	
-	void ballCarrier(int direction){
+	void ballCarrier(int direction){//Move this to grabber class.
 		if (direction == CARRY_IN) {
 			cimBall.set(-ballSpeed);
 		}
@@ -39,10 +39,11 @@ public class MotorControl {
 		}
 	}
 	
-	/**
-	 * Method for inputting values from input manager for gamepiece. NOTE: We may need to make more of these depending upon the final design.
-	 */
-	void gameMotor(){
+	public void arm(){
+		
+	}
+	
+	public void climb(){
 		
 	}
 }

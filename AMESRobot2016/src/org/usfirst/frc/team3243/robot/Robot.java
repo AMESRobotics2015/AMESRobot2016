@@ -25,10 +25,9 @@ public class Robot extends IterativeRobot {
     MotorControl MC;
     Sensors S;
     RobotMap RM;
-    AutoControl A;
     double degree;
     double distance;
-    private static final String[] GRIP_ARGS = new String[] {
+    private static final String[] GRIP_ARGS = new String[] {//Move camera stuff to sensors class.
     	"/usr/local/frc/JRE/bin/java","-jar","/home/lvuser/grip.jar",
     	"/home/lvuser/FindBoulder.grip"
     };
@@ -46,7 +45,6 @@ public class Robot extends IterativeRobot {
         IM = new InputManager();
         MC = new MotorControl();
         S = new Sensors();
-        A = new AutoControl();
         RM = new RobotMap();
         try{
         	Runtime.getRuntime().exec(GRIP_ARGS);
@@ -128,11 +126,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	//S.startCamera();
     	MC.drive(IM.input());
-    	if (IM.move.getRawButton(4) == true) {
-    		S.gyroFeed(true);
-    	} else {
-    		S.gyroFeed(false);
-    	}
+    	S.gyroFeed(IM.move.getRawButton(4));
+    	
     	int ballDir = (IM.move.getRawButton(1)?MotorControl.CARRY_IN:MotorControl.CARRY_STOP);
     	if (IM.move.getRawButton(2)) {
     		if (ballDir == MotorControl.CARRY_IN) {
@@ -142,7 +137,7 @@ public class Robot extends IterativeRobot {
     			ballDir = MotorControl.CARRY_OUT;
     		}
     	}
-    	MC.ballCarrier(ballDir);
+    	MC.ballCarrier(ballDir);//Move the Input stuff to InputManager and the Motor stuff to Grabber class.
     }
     
     /**

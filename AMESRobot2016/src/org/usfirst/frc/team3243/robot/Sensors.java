@@ -37,16 +37,19 @@ public class Sensors {
 	}
 	
 	/**
-	 * This method ONLY READS THE ENCODER count.
+	 * This method reads the encoder count and turns it into a distance.
 	 * @param cycles
 	 * @return
 	 */
-	public double encoderCount()
+	public double encoder()
 	{
 		double num = 0;//Use this as the # encoder count.
 		//As per the javadoc comment above, this needs to be altered slightly.
 		Rotations.reset();
 		Rotations.get();
+		
+		//TO DO: Convert counts to a distance.
+		
 		return num;
 	}
 	
