@@ -39,11 +39,5 @@ public class DriveSystem {
 		}
 	}
 	
-	public void arm(){
-		
-	}
 	
-	public void climb(){
-		
-	}
 }
