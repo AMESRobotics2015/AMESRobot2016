@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
     String autoSelected;
     SendableChooser chooser;
     InputManager IM;
-    MotorControl MC;
+    DriveSystem DS;
     Sensors S;
     RobotMap RM;
     double degree;
@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         IM = new InputManager();
-        MC = new MotorControl();
+        DS = new DriveSystem();
         S = new Sensors();
         RM = new RobotMap();
         try{
@@ -89,7 +89,7 @@ public class Robot extends IterativeRobot {
     	    double[] in = new double[2];
     	    in[0] = 0.7;
     	    in[1] = 0.7;
-    	    MC.drive(in);
+    	    DS.drive(in);
     	}
     	*/
     	
@@ -103,7 +103,7 @@ public class Robot extends IterativeRobot {
     		double[] in = new double[2];
     	    in[0] = 0.7;
     	    in[1] = -0.7;
-    	    MC.drive(in);
+    	    DS.drive(in);
     	}
     	}
     	if (degree < 0)
@@ -112,7 +112,7 @@ public class Robot extends IterativeRobot {
     		double[] in = new double[2];
     	    in[0] = -0.7;
     	    in[1] = 0.7;
-    	    MC.drive(in);
+    	    DS.drive(in);
     	}
     	}
     	
@@ -125,19 +125,19 @@ public class Robot extends IterativeRobot {
      * */
     public void teleopPeriodic() {
     	//S.startCamera();
-    	MC.drive(IM.input());
+    	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
     	
-    	int ballDir = (IM.move.getRawButton(1)?MotorControl.CARRY_IN:MotorControl.CARRY_STOP);
+    	int ballDir = (IM.move.getRawButton(1)?DriveSystem.CARRY_IN:DriveSystem.CARRY_STOP);
     	if (IM.move.getRawButton(2)) {
-    		if (ballDir == MotorControl.CARRY_IN) {
-    			ballDir = MotorControl.CARRY_STOP;
+    		if (ballDir == DS.CARRY_IN) {
+    			ballDir = DS.CARRY_STOP;
     		}
     		else {
-    			ballDir = MotorControl.CARRY_OUT;
+    			ballDir = DS.CARRY_OUT;
     		}
     	}
-    	MC.ballCarrier(ballDir);//Move the Input stuff to InputManager and the Motor stuff to Grabber class.
+    	DS.ballCarrier(ballDir);//Move the Input stuff to InputManager and the Motor stuff to Grabber class.
     }
     
     /**
