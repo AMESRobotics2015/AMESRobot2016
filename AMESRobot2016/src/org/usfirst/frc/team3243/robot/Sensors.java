@@ -5,13 +5,12 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 import edu.wpi.first.wpilibj.AnalogGyro;
 
 /**
- * This class contains all the classes having to do with the various sensors (camera, encoder, accelerometer, etc.) we might end up using.
+ * This class contains all the methods having to do with: cameras and gyro.
  * @author markvandermerwe
  *
  */
 public class Sensors {
 	//protected static USBCamera watch;
-	protected static Encoder Rotations;
 	protected static AnalogGyro Direction;
 	protected static CameraServer camera;
 	/**
@@ -21,7 +20,6 @@ public class Sensors {
 	{
 		camera = CameraServer.getInstance();
 		//watch = new USBCamera();
-		// Rotations  = new Encoder(null, null);
 		Direction = new AnalogGyro(0);
 		Direction.initGyro();
 		Direction.calibrate();
@@ -34,23 +32,6 @@ public class Sensors {
 	{
 		camera.setQuality(50);
 		camera.startAutomaticCapture("cam1");
-	}
-	
-	/**
-	 * This method reads the encoder count and turns it into a distance.
-	 * @param cycles
-	 * @return
-	 */
-	public double encoder()
-	{
-		double num = 0;//Use this as the # encoder count.
-		//As per the javadoc comment above, this needs to be altered slightly.
-		Rotations.reset();
-		Rotations.get();
-		
-		//TO DO: Convert counts to a distance.
-		
-		return num;
 	}
 	
 	/**
@@ -74,16 +55,10 @@ public class Sensors {
 	}
 	
 	/**
-	 * Not sure we'll need this but its here in case - this method will allow us to get information from camera hooked up - this is vision processing.
+	 * BEN PUT YOUR VISION GRIP STUFF HERE.
 	 */
 	public void vision(){
 		
 	}
 	
-	/**
-	 * This method will take input from the encoders and use it to correct the movement to what it should actually be.
-	 */
-	public void correction(){
-		
-	}
 }

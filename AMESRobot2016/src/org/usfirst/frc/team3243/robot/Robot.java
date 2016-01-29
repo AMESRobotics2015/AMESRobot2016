@@ -83,40 +83,6 @@ public class Robot extends IterativeRobot {
     	//Put default auto code here
             break;
     	}
-    	/*
-    	//This will be able to drive us forward a distance we tell it. Copy and paste as needed.
-    	while(S.encoderCount() < A.moveCalc(distance,RM.circ)){
-    	    double[] in = new double[2];
-    	    in[0] = 0.7;
-    	    in[1] = 0.7;
-    	    DS.drive(in);
-    	}
-    	*/
-    	
-    	//This will be able to turn us a degree we tell it. Copy and paste as needed.
-    	S.gyroFeed(true);
-    	
-    	if (degree > 0)
-    		//clockwise increases the gyro output
-    	{//If you want to turn 
-    	while(S.gyroFeed(false) < degree){
-    		double[] in = new double[2];
-    	    in[0] = 0.7;
-    	    in[1] = -0.7;
-    	    DS.drive(in);
-    	}
-    	}
-    	if (degree < 0)
-    	{
-    	while(S.gyroFeed(false) > degree){
-    		double[] in = new double[2];
-    	    in[0] = -0.7;
-    	    in[1] = 0.7;
-    	    DS.drive(in);
-    	}
-    	}
-    	
-    	
     }
 
     /**

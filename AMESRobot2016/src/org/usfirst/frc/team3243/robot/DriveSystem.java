@@ -15,6 +15,9 @@ public class DriveSystem {
 	Victor cim3 = new Victor(2);
 	Victor cim4 = new Victor (3);
 	Victor cimBall = new Victor(4);
+	EncoderWheel encLeft = new EncoderWheel(0,0);
+	EncoderWheel encRight = new EncoderWheel(1,1);
+	Sensors s = new Sensors();
 	
 	/**
 	 * Our drive thing - sends the inputs we want to use into the various motors.
@@ -25,6 +28,19 @@ public class DriveSystem {
 		cim2.set(drv[1]);
 		cim3.set(drv[0]);
 		cim4.set(drv[0]);
+	}
+	
+	void moveDistance(double distance){
+		while(encLeft.getDistance()<distance && encRight.getDistance()<distance){
+			cim1.set(0.3);
+			cim2.set(0.3);
+			cim3.set(0.3);
+			cim4.set(0.3);
+		}
+	}
+	
+	void rotate(double rotation){
+		
 	}
 	
 	void ballCarrier(int direction){//Move this to grabber class.
