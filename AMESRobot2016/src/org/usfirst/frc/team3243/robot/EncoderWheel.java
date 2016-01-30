@@ -13,8 +13,10 @@ public class EncoderWheel {
 	 * @param otherpin
 	 */
 	EncoderWheel(int pin, int otherpin){
+		/*
 		Encoder rotations = new Encoder(pin, otherpin);//This will have to change depending upon the type of encoders we use. Could also potentially change to prox. sensors but same takeaway.
 		r = new RobotMap();
+		*/
 	}
 	
 	double getCount(){
@@ -26,7 +28,7 @@ public class EncoderWheel {
 	public double getDistance(){
 		//Using radius and count from above get a final distance to use.
 		double distance = getCount()/rotationFactor;
-		distance = distance * r.circ;
+		distance = distance * 0;
 		return distance;
 	}
 }

@@ -7,6 +7,6 @@ package org.usfirst.frc.team3243.robot;
  */
 public class RobotMap {
 
-	public final double circ = 0;
+	//public final double circ = 0;
 	
 }

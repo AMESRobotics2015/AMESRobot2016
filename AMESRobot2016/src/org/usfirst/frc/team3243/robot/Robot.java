@@ -80,7 +80,7 @@ public class Robot extends IterativeRobot {
             break;
     	case defaultAuto:
     	default:
-    		
+    		DS.moveDistance(5);
     		DS.rotate(20);
     		
     	//Put default auto code here
@@ -97,6 +97,7 @@ public class Robot extends IterativeRobot {
     	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
     	
+    	/*
     	int ballDir = (IM.move.getRawButton(1)?DriveSystem.CARRY_IN:DriveSystem.CARRY_STOP);
     	if (IM.move.getRawButton(2)) {
     		if (ballDir == DS.CARRY_IN) {
@@ -107,6 +108,7 @@ public class Robot extends IterativeRobot {
     		}
     	}
     	DS.ballCarrier(ballDir);//Move the Input stuff to InputManager and the Motor stuff to Grabber class.
+    	*/
     }
     
     /**
