@@ -26,6 +26,4 @@
   <property file="${user.home}/wpilib/java/${version}/ant/build.properties"/>
   
   <import file="${wpilib.ant.dir}/build.xml"/>
-<property name="target" value="roborio-3244-frc.local"/>
-	<property name="target" value="10.32.44.23"/>
 </project> 

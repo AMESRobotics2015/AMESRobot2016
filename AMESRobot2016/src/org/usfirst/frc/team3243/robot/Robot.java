@@ -80,6 +80,9 @@ public class Robot extends IterativeRobot {
             break;
     	case defaultAuto:
     	default:
+    		
+    		DS.rotate(20);
+    		
     	//Put default auto code here
             break;
     	}

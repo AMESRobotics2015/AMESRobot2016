@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.AnalogGyro;
  */
 public class Sensors {
 	//protected static USBCamera watch;
-	protected static AnalogGyro Direction;
 	protected static CameraServer camera;
+	AnalogGyro Direction;
 	/**
 	 * Constructor to set up our various sensors.
 	 */
@@ -23,6 +23,7 @@ public class Sensors {
 		Direction = new AnalogGyro(0);
 		Direction.initGyro();
 		Direction.calibrate();
+		
 	}
 	
 	/**
