@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
     DriveSystem DS;
     Sensors S;
     RobotMap RM;
+    //Grabber G;
     double degree;
     double distance;
     private static final String[] GRIP_ARGS = new String[] {//Move camera stuff to sensors class.
@@ -43,8 +44,8 @@ public class Robot extends IterativeRobot {
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         IM = new InputManager();
-        DS = new DriveSystem();
         S = new Sensors();
+        DS = new DriveSystem(S);
         RM = new RobotMap();
         try{
         	Runtime.getRuntime().exec(GRIP_ARGS);
@@ -97,18 +98,6 @@ public class Robot extends IterativeRobot {
     	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
     	
-    	/*
-    	int ballDir = (IM.move.getRawButton(1)?DriveSystem.CARRY_IN:DriveSystem.CARRY_STOP);
-    	if (IM.move.getRawButton(2)) {
-    		if (ballDir == DS.CARRY_IN) {
-    			ballDir = DS.CARRY_STOP;
-    		}
-    		else {
-    			ballDir = DS.CARRY_OUT;
-    		}
-    	}
-    	DS.ballCarrier(ballDir);//Move the Input stuff to InputManager and the Motor stuff to Grabber class.
-    	*/
     }
     
     /**

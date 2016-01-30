@@ -13,9 +13,11 @@ public class DriveSystem {
 	Victor cim1 = new Victor(0);//left front - quick
 	Victor cim2 = new Victor(1);//left back - quick
 	Victor cim3 = new Victor(2);//right back - quick
-	Victor cim4 = new Victor (3);//right front - quick
-	//Victor cimBall = new Victor(4);
-	Sensors s = new Sensors();
+	Victor cim4 = new Victor(3);//right front - quick
+	Sensors s;
+	DriveSystem(Sensors sensor){
+		s = sensor;
+	}
 	
 	/**
 	 * Our drive thing - sends the inputs we want to use into the various motors.
@@ -57,21 +59,10 @@ public class DriveSystem {
 			}
 		}
 		
+		
 	}
 	
-	void ballCarrier(int direction){//Move this to grabber class.
-		/*
-		if (direction == CARRY_IN) {
-			cimBall.set(-ballSpeed);
-		}
-		else if (direction == CARRY_OUT){
-			cimBall.set(ballSpeed);
-		}
-		else {
-			cimBall.set(0);
-		}
-		*/
-	}
+	
 	
 	
 }
