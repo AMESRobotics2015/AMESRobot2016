@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
     DriveSystem DS;
     Sensors S;
     RobotMap RM;
+    EncoderWheel EW;
     //Grabber G;
     double degree;
     double distance;
@@ -47,6 +48,7 @@ public class Robot extends IterativeRobot {
         S = new Sensors();
         DS = new DriveSystem(S);
         RM = new RobotMap();
+        EW = new EncoderWheel(1);
         try{
         	Runtime.getRuntime().exec(GRIP_ARGS);
         }
@@ -96,7 +98,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	//S.startCamera();
     	DS.drive(IM.input());
-    	S.gyroFeed(IM.move.getRawButton(4));    	
+    	S.gyroFeed(IM.move.getRawButton(4));
+    	EW.getCount(false);
     }
     
     /**

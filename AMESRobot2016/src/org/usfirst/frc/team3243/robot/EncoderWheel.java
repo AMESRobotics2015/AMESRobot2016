@@ -1,10 +1,13 @@
 package org.usfirst.frc.team3243.robot;
 
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 
 public class EncoderWheel {
 
 	RobotMap r;
+	Counter rotations;
 	double rotationFactor = 1;
 	
 	/**
@@ -12,23 +15,25 @@ public class EncoderWheel {
 	 * @param pin
 	 * @param otherpin
 	 */
-	EncoderWheel(int pin, int otherpin){
-		/*
-		Encoder rotations = new Encoder(pin, otherpin);//This will have to change depending upon the type of encoders we use. Could also potentially change to prox. sensors but same takeaway.
-		r = new RobotMap();
-		*/
+	EncoderWheel(int pin){
+		
+		rotations = new Counter(pin);//This will have to change depending upon the type of encoders we use. Could also potentially change to prox. sensors but same takeaway.
+		
 	}
 	
-	double getCount(){
-		//TO DO: Code to do here will get the encoder count.
-		double count = 0;
+	public double getCount(boolean reset){
+		if(reset){
+			rotations.reset();
+		}
+		double count = rotations.get();
+		System.out.println(count);
 		return count;
 	}
 	
 	public double getDistance(){
 		//Using radius and count from above get a final distance to use.
-		double distance = getCount()/rotationFactor;
-		distance = distance * 0;
+		//double distance = getCount(false)/rotationFactor;
+		double distance = 0;
 		return distance;
 	}
 }
