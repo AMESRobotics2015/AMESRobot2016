@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 /**
  * This class contains our methods/functions relating to the Input of information from our user.
  * @author markvandermerwe
- *
+ * 
  */
 public class InputManager {
 	Joystick move = new Joystick(0);
@@ -16,20 +16,8 @@ public class InputManager {
 	 * @return
 	 */
 	double[] input() {
-		in = rawAxisGet();
-		in[0] = ramp(deadZone(in[0]));
-		in[1] = ramp(deadZone(in[1]));
-		
-		return in;
-	}
-	
-	/**
-	 * This method gets the raw data back from the joysticks to be used in other parts of the code.
-	 * @return
-	 */
-	double[] rawAxisGet(){
-		in[0] = move.getRawAxis(1);
-		in[1] = move.getRawAxis(3);
+		in[0] = ramp(deadZone(move.getRawAxis(1)));
+		in[1] = ramp(deadZone(move.getRawAxis(3)));		
 		return in;
 	}
 	
@@ -51,7 +39,7 @@ public class InputManager {
 	 * @param input - input value from the user after it was deadzoned.
 	 * @return returns a ramped value.
 	 */
-	double ramp(double input){
+	double ramp(double input) {
 		if (move.getRawButton(8)) {
 			input = Math.pow(input, 3)/3;
 		}
@@ -64,7 +52,7 @@ public class InputManager {
 	/**
 	 * Read button presses as user input - grabber.
 	 */
-public int grabber(){
+	public int grabber() {
 		if(move.getRawButton(7/*controller pin*/))
 		{
 			suckIn++;
