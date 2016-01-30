@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public class InputManager {
 	Joystick move = new Joystick(0);
 	double[] in = new double[2];
-	
+	int suckIn = 0;
 	/**
 	 * Method that will return the final drive array to be sent to the motor control class.
 	 * @return
@@ -64,6 +64,13 @@ public class InputManager {
 	/**
 	 * Read button presses as user input - grabber.
 	 */
+public int grabber(){
+		if(move.getRawButton(7/*controller pin*/))
+		{
+			suckIn++;
+		}
+		return suckIn;
+	}
 	public void armInput(){
 		
 	}
