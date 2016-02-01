@@ -11,7 +11,7 @@ public class Grabber {
 		DigitalInput limitswitch = new DigitalInput(1/*whatever port it will use*/);
 	}
 	
-void pushIn(int buttonCount){//Move this to grabber class.
+void pushIn(int buttonCount){
 		if (buttonCount % 2 == 1)
 		{
 			while (limitswitch.get())
@@ -22,7 +22,7 @@ void pushIn(int buttonCount){//Move this to grabber class.
 		else cimBall.set(0.2);
 		
 	}
-	void ballCarrier(int direction){//Move this to grabber class.
+	void ballCarrier(int direction){
 		
 	}
 
