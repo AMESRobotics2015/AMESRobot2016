@@ -9,6 +9,15 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/*
+ * Drive - fix. Finish by 2/1/16
+ * Ball handling - done, test. Finish by 2/1/16
+ * Camera - fix. Finish by 2/2/16
+ * Arm - need to do. 2/5/16 (tentative)
+ * Climber - need to do. 2/5/16 (tentative)
+ * Auto - Gyro (2/3/16) + Encoders (2/7/16) test. Also create grabber code for auto (2/6/15).
+ */
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
