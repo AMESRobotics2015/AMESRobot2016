@@ -1,6 +1,9 @@
 package org.usfirst.frc.team3243.robot;
 
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
@@ -12,6 +15,12 @@ public class Sensors {
 	//protected static USBCamera watch;
 	protected static CameraServer camera;
 	protected static AnalogGyro Direction;
+	private static final String[] GRIP_ARGS = new String[] {//Move camera stuff to sensors class.
+	    	"/usr/local/frc/JRE/bin/java","-jar","/home/lvuser/grip.jar",
+	    	"/home/lvuser/FindBoulder.grip"
+	    };
+	private final NetworkTable grip = NetworkTable.getTable("grip");
+	
 	/**
 	 * Constructor to set up our various sensors.
 	 */
@@ -22,6 +31,13 @@ public class Sensors {
 		Direction = new AnalogGyro(0);
 		Direction.initGyro();
 		Direction.calibrate();
+		
+		try{
+        	Runtime.getRuntime().exec(GRIP_ARGS);
+        }
+        catch (IOException e){
+        	e.printStackTrace();
+        }
 		
 	}
 	

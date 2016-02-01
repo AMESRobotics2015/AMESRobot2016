@@ -38,11 +38,6 @@ public class Robot extends IterativeRobot {
     //Grabber G;
     double degree;
     double distance;
-    private static final String[] GRIP_ARGS = new String[] {//Move camera stuff to sensors class.
-    	"/usr/local/frc/JRE/bin/java","-jar","/home/lvuser/grip.jar",
-    	"/home/lvuser/FindBoulder.grip"
-    };
-    private final NetworkTable grip = NetworkTable.getTable("grip");
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -58,12 +53,7 @@ public class Robot extends IterativeRobot {
         DS = new DriveSystem(S);
         RM = new RobotMap();
         EW = new EncoderWheel(1);
-        try{
-        	Runtime.getRuntime().exec(GRIP_ARGS);
-        }
-        catch (IOException e){
-        	e.printStackTrace();
-        }
+        
     }
     
 	/**
