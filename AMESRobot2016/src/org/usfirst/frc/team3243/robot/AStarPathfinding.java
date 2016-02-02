@@ -8,7 +8,7 @@ public class AStarPathfinding {
 	
 	static class Cell{
 		int heuristicCost = 0;
-		int finalcost = 0;
+		int finalCost = 0;
 		int i, j;
 		Cell parent;
 	
@@ -111,4 +111,28 @@ public class AStarPathfinding {
 		
 	}
 }
+	
+	public static void start(){
+		field = new Cell[30][26];
+		closed = new boolean [30][26];
+		open = PriorityQueue<>((Object o1, Object o2) -> {
+			Cell c1 = (Cell)o1;
+            Cell c2 = (Cell)o2;
+            
+            return c1.finalCost < c2.finalCost? - 1:
+                c1.finalCost > c2.finalCost?1:0;
+    });
+		
+		setStart(24, 2);
+		setEnd(3, 9);
+		
+		for(int i = 0; i < 30; i++){
+			for(int j = 0; j < 26; j++){
+				field[i][j] = new Cell(i, j);
+                field[i][j].heuristicCost = Math.abs(i-endi) + Math.abs(j-endj);
+			}
+		}
+		
+		field[30][26].finalCost = 0;
+	}
 }
