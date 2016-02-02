@@ -133,6 +133,54 @@ public class AStarPathfinding {
 			}
 		}
 		
-		field[30][26].finalCost = 0;
+		field[24][2].finalCost = 0;
+		
+		
+		for (int i = 17; i < 24; i++){
+			for (int j = 5; j < 26; j++){
+				setBlocked(i, j);
+			}
+		}
+		for (int i = 1; i < 25; i++){
+			for (int j = 23; j < 27; j++){
+				setBlocked(i, j);
+			}
+		}
+		
+		System.out.println("Field: ");
+        for(int i = 0; i < 30; i++){
+            for(int j = 0; j < 26; j++){
+               if(i == 24 && j == 2) System.out.print("ST  "); //Start
+               else if(i == 3 && j == 9) System.out.print("ED  ");  //End
+               else if(field[i][j]!=null)System.out.printf("%-3d ", 0);
+               else System.out.print("BL  "); 
+            }
+            System.out.println();
+        } 
+        System.out.println();
+        
+        AStar();
+        System.out.println("\nScores for cells: ");
+        for(int i = 0; i < 30; ++i){
+            for(int j = 0; j < 30; ++j){
+                if(field[i][j]!=null)System.out.printf("%-3d ", field[i][j].finalCost);
+                else System.out.print("BL  ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+         
+        if(closed[endi][endj]){
+            //Trace back the path 
+             System.out.println("Path: ");
+             Cell current = field[endi][endj];
+             System.out.print(current);
+             while(current.parent!=null){
+                 System.out.print(" -> " + current.parent);
+                 current = current.parent;
+             } 
+             System.out.println();
+        }else System.out.println("No possible path");
+ }
 	}
 }
