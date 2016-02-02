@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /*
- * Drive - fix. Finish by 2/1/16
+ * Drive - Done. Finished on 2/1/16
  * Ball handling - done, test. Finish by 2/5/16
  * Camera - fix. Finish by 2/1/16
  * Arm - need to do. 2/5/16 (tentative)

@@ -41,10 +41,10 @@ public class InputManager {
 	 */
 	double ramp(double input) {
 		if (move.getRawButton(8)) {
-			input = Math.pow(input, 2);
+			input = Math.pow(input, 2)/3;
 		}
 		else {
-			input = Math.pow(input, 3);
+			input = Math.pow(input, 2)/6;
 		}
 		return input;
 	}
