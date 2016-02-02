@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
         S = new Sensors();
         DS = new DriveSystem(S);
         RM = new RobotMap();
-        EW = new EncoderWheel(1);
+        EW = new EncoderWheel(1,2);
         
     }
     

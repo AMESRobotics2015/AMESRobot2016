@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Encoder;
 public class EncoderWheel {
 
 	RobotMap r;
-	DigitalInput rotations;
+	Encoder rotations;
 	double rotationFactor = 1;
 	double x = 0;
 	
@@ -16,25 +16,20 @@ public class EncoderWheel {
 	 * @param pin
 	 * @param otherpin
 	 */
-	EncoderWheel(int pin){
+	EncoderWheel(int pin,int otherpin){
 		
-		rotations = new DigitalInput(pin);//This will have to change depending upon the type of encoders we use. Could also potentially change to prox. sensors but same takeaway.
+		rotations = new Encoder(pin,otherpin);//This will have to change depending upon the type of encoders we use. Could also potentially change to prox. sensors but same takeaway.
 		
 	}
 	
 	public double getCount(boolean reset){
-		
+		double count;
 		if(reset){
-			x = 0;
+			rotations.reset();
 		}
-		boolean count = rotations.get();
+		count = rotations.get();
 		System.out.println(count);
-		
-		if(count){
-			x++;
-		}
-		
-		return x;
+		return count;
 	}
 	
 	public double getDistance(){
