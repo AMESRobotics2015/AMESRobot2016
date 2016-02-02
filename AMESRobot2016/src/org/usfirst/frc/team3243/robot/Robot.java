@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
     	autoSelected = (String) chooser.getSelected();
 //		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
-		AS.start();
+		
     }
 
     /**
@@ -80,6 +80,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
     	//grip.getNumberArray("FindBoulder/area",double[]) to get contour areas
+    	AS.start();
     	switch(autoSelected) {
     	case customAuto:
         //Put custom auto code here   
