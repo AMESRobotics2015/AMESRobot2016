@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /*
  * Drive - Done. Finished on 2/1/16
- * Ball handling - done, test. Finish by 2/5/16
+ * Ball handling - test. Finish by 2/5/16
  * Camera - fix. Finish by 2/1/16
  * Arm - need to do. 2/5/16 (tentative)
  * Climber - need to do. 2/5/16 (tentative)
@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
     Sensors S;
     RobotMap RM;
     EncoderWheel EW;
+    EncoderWheel EWA;
     //Grabber G;
     double degree;
     double distance;
@@ -49,11 +50,11 @@ public class Robot extends IterativeRobot {
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         IM = new InputManager();
-        S = new Sensors();
-        DS = new DriveSystem(S);
-        RM = new RobotMap();
         EW = new EncoderWheel(1,2);
-        
+        EWA = new EncoderWheel(3,4);
+        S = new Sensors();
+        DS = new DriveSystem(S,EW,EWA);
+        RM = new RobotMap();
     }
     
 	/**

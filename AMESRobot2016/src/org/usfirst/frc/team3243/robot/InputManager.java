@@ -40,11 +40,9 @@ public class InputManager {
 	 * @return returns a ramped value.
 	 */
 	double ramp(double input) {
-		if (move.getRawButton(8)) {
-			input = Math.pow(input, 2)/3;
-		}
-		else {
-			input = Math.pow(input, 2)/6;
+		input = Math.pow(input, 3);
+		if(input>1){
+			input = 1;
 		}
 		return input;
 	}
