@@ -1,22 +1,114 @@
 package org.usfirst.frc.team3243.robot;
 
 
-/*
- * The robot will create a mental image of the field and then pathfind to a certain point relative to itself 
- * This will be possible using the A* algorithm 
- * If you have any questions feel free to ask Riley
- */
+
 public class AStarPathfinding {
-	int l;
-	int w;
+	public static final int Cost_Diagonal = 14;
+	public static final int Cost_VH = 10;
 	
-	int[][] feild = new int[54][26];
+	static class Cell{
+		int heuristicCost = 0;
+		int finalcost = 0;
+		int i, j;
+		Cell parent;
 	
-	public void feildsetup(){
-		for(int x = 1 ; x < 55 ; x++){
-			for(int w = 1; w < 26; w++){
-				feild[l][w] = 1;
-			}
+		Cell(int i, int j){
+			this.i = i;
+			this.j = j;
+		}
+		@override
+		public String toString(){
+			return "["+this.i+", "+this.j+"]";
 		}
 	}
+	
+	static cell[][] field = new cell[5][5];
+	static PriorityQueue<Cell> open;
+	static boolean closed[][];
+	static int starti, startj;
+	static int endi, endj;
+	
+	public static void setBlocked(int i, int j){
+		field[i][j] = null;
+	}
+	
+	public static void setStart(){
+		starti = i;
+		startj = j;
+	}
+	
+	public static void setEnd(){
+		endi = i;
+		endj = j;
+	}
+	
+	static void CheckandUpdateCost(Cell current, Cell t, int cost){
+		if(t == null || closed[t.i][t.j])return;
+		int t_final_cost = t.heuristicCost+cost;
+		
+		boolean inOpen = open.contains(t);
+		if(!inOpen || t_final_cost<t.finalCost){
+			t.finalcost = t_final_cost;
+			t.parent = current;
+			if(!inOpen)open.add(t);
+		}
+	}
+	
+	public static void AStar(){
+		
+		open.add(field[starti][startj]);
+		Cell current;
+		
+		while(true){
+			curent = open.poll();
+			if(current == null)break;
+			closed[current.i][current.j] = true;
+			
+			if(current.equals(field[endi][endj])){
+				return;
+			}
+			
+			Cell t;
+			if(current.i - 1 >= 0){
+				t = field[current.i - 1][current.j];
+				CheckandUpdateCost(current, t, current.finalCost + Cost_VH);
+				
+				if(current.j - 1 < field[0].length){
+					t = field[currenti - 1][currentj - 1];
+					CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
+				}
+				
+				if(current.j + 1 < field[0].length){
+					t = field[currenti - 1][currentj + 1];
+					CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
+				}
+			}
+			
+			if(current.j-1>=0){
+                t = grid[current.i][current.j-1];
+                checkAndUpdateCost(current, t, current.finalCost + Cost_VH); 
+            }
+
+            if(current.j+1<grid[0].length){
+                t = grid[current.i][current.j+1];
+                checkAndUpdateCost(current, t, current.finalCost + Cost_VH); 
+            }
+
+            if(current.i+1<grid.length){
+                t = grid[current.i+1][current.j];
+                checkAndUpdateCost(current, t, current.finalCost + Cost_VH); 
+
+                if(current.j-1>=0){
+                    t = grid[current.i+1][current.j-1];
+                    checkAndUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
+                }
+                
+                if(current.j+1<grid[0].length){
+                   t = grid[current.i+1][current.j+1];
+                    checkAndUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
+                }  
+		}
+		
+	}
+}
 }
