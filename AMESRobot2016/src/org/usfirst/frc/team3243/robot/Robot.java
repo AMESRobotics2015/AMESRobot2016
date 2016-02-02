@@ -36,6 +36,7 @@ public class Robot extends IterativeRobot {
     RobotMap RM;
     EncoderWheel EW;
     EncoderWheel EWA;
+    AStarPathfinding AS;
     //Grabber G;
     double degree;
     double distance;
@@ -55,6 +56,7 @@ public class Robot extends IterativeRobot {
         S = new Sensors();
         DS = new DriveSystem(S,EW,EWA);
         RM = new RobotMap();
+        AS = new AStarPathfinding();
     }
     
 	/**
@@ -70,6 +72,7 @@ public class Robot extends IterativeRobot {
     	autoSelected = (String) chooser.getSelected();
 //		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
+		AS.start();
     }
 
     /**
