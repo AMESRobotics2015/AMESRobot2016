@@ -1,11 +1,10 @@
 package org.usfirst.frc.team3243.robot;
-
+import java.util.*;
 
 
 public class AStarPathfinding {
 	public static final int Cost_Diagonal = 14;
 	public static final int Cost_VH = 10;
-	
 	static class Cell{
 		int heuristicCost = 0;
 		int finalCost = 0;
@@ -16,13 +15,13 @@ public class AStarPathfinding {
 			this.i = i;
 			this.j = j;
 		}
-		@override
+		
 		public String toString(){
 			return "["+this.i+", "+this.j+"]";
 		}
 	}
 	
-	static cell[][] field = new cell[5][5];
+	static Cell[][] field = new Cell[5][5];
 	static PriorityQueue<Cell> open;
 	static boolean closed[][];
 	static int starti, startj;
@@ -32,12 +31,12 @@ public class AStarPathfinding {
 		field[i][j] = null;
 	}
 	
-	public static void setStart(){
+	public static void setStart(int i, int j){
 		starti = i;
 		startj = j;
 	}
 	
-	public static void setEnd(){
+	public static void setEnd(int i, int j){
 		endi = i;
 		endj = j;
 	}
@@ -48,7 +47,7 @@ public class AStarPathfinding {
 		
 		boolean inOpen = open.contains(t);
 		if(!inOpen || t_final_cost<t.finalCost){
-			t.finalcost = t_final_cost;
+			t.finalCost = t_final_cost;
 			t.parent = current;
 			if(!inOpen)open.add(t);
 		}
@@ -60,7 +59,7 @@ public class AStarPathfinding {
 		Cell current;
 		
 		while(true){
-			curent = open.poll();
+			current = open.poll();
 			if(current == null)break;
 			closed[current.i][current.j] = true;
 			
@@ -74,38 +73,38 @@ public class AStarPathfinding {
 				CheckandUpdateCost(current, t, current.finalCost + Cost_VH);
 				
 				if(current.j - 1 < field[0].length){
-					t = field[currenti - 1][currentj - 1];
+					t = field[current.i - 1][current.j - 1];
 					CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
 				}
 				
 				if(current.j + 1 < field[0].length){
-					t = field[currenti - 1][currentj + 1];
+					t = field[current.i - 1][current.j + 1];
 					CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
 				}
 			}
 			
 			if(current.j-1>=0){
-                t = grid[current.i][current.j-1];
-                checkAndUpdateCost(current, t, current.finalCost + Cost_VH); 
+                t = field[current.i][current.j-1];
+                CheckandUpdateCost(current, t, current.finalCost + Cost_VH); 
             }
 
-            if(current.j+1<grid[0].length){
-                t = grid[current.i][current.j+1];
-                checkAndUpdateCost(current, t, current.finalCost + Cost_VH); 
+            if(current.j+1<field[0].length){
+                t = field[current.i][current.j+1];
+                CheckandUpdateCost(current, t, current.finalCost + Cost_VH); 
             }
 
-            if(current.i+1<grid.length){
-                t = grid[current.i+1][current.j];
-                checkAndUpdateCost(current, t, current.finalCost + Cost_VH); 
+            if(current.i+1<field.length){
+                t = field[current.i+1][current.j];
+                CheckandUpdateCost(current, t, current.finalCost + Cost_VH); 
 
                 if(current.j-1>=0){
-                    t = grid[current.i+1][current.j-1];
-                    checkAndUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
+                    t = field[current.i+1][current.j-1];
+                    CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
                 }
                 
-                if(current.j+1<grid[0].length){
-                   t = grid[current.i+1][current.j+1];
-                    checkAndUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
+                if(current.j+1<field[0].length){
+                   t = field[current.i+1][current.j+1];
+                   CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
                 }  
 		}
 		
@@ -115,13 +114,19 @@ public class AStarPathfinding {
 	public static void start(){
 		field = new Cell[30][26];
 		closed = new boolean [30][26];
-		open = PriorityQueue<>((Object o1, Object o2) -> {
-			Cell c1 = (Cell)o1;
-            Cell c2 = (Cell)o2;
-            
-            return c1.finalCost < c2.finalCost? - 1:
-                c1.finalCost > c2.finalCost?1:0;
-    });
+		open = new PriorityQueue(16, new Comparator() {
+			
+			public int compare(Cell c1, Cell c2) {
+			return c1.finalCost < c2.finalCost ? -1:
+			c1.finalCost > c2.finalCost ? 1 : 0;
+			}
+
+			@Override
+			public int compare(Object o1, Object o2) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+			});
 		
 		setStart(24, 2);
 		setEnd(3, 9);
@@ -183,4 +188,3 @@ public class AStarPathfinding {
         }else System.out.println("No possible path");
  }
 	}
-}
