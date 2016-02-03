@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Arm - need to do. 2/5/16 (tentative)
  * Climber - need to do. 2/5/16 (tentative)
  * Auto - Gyro (2/3/16) + Encoders (2/7/16) test. Also create grabber code for auto (2/6/15).
+ * Pathfinding integration - (2/9/16)
  */
 
 /**
@@ -104,6 +105,7 @@ public class Robot extends IterativeRobot {
     	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
     	EW.getCount(false);
+    	IM.armInput();
     }
     
     /**

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class InputManager {
 	Joystick move = new Joystick(0);
+	Joystick game = new Joystick(1);
 	double[] in = new double[2];
 	int suckIn = 0;
 	/**
@@ -57,8 +58,13 @@ public class InputManager {
 		}
 		return suckIn;
 	}
+	
+	/**
+	 * Read game controller joystick to move the arm up and down.
+	 */
 	public void armInput(){
-		
+		int pov = game.getPOV(1);
+		System.out.println(pov);
 	}
 	
 	public void climberInput(){
