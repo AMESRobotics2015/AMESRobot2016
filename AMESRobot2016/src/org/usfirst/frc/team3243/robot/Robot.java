@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Camera - fix. Finish by 2/1/16
  * Arm - need to do. 2/5/16 (tentative)
  * Climber - need to do. 2/5/16 (tentative)
- * Auto - Gyro - fix code for new gyro (2/3/16) + Encoders (2/7/16) test. Also create grabber code for auto (2/6/15).
+ * Auto - Gyro - fix for new (2/3/16) + Encoders (2/7/16) test. Also create grabber code for auto (2/6/15).
  * Pathfinding integration - (2/9/16)
  */
 
