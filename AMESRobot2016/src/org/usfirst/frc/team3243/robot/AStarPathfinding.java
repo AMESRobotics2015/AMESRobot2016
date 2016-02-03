@@ -5,6 +5,7 @@ import java.util.*;
 public class AStarPathfinding {
 	public static final int Cost_Diagonal = 14;
 	public static final int Cost_VH = 10;
+	
 	static class Cell{
 		int heuristicCost = 0;
 		int finalCost = 0;
@@ -111,25 +112,19 @@ public class AStarPathfinding {
 	}
 }
 	
-	public static void start(){
+	public static double[] start(){
 		field = new Cell[30][26];
 		closed = new boolean [30][26];
-		open = new PriorityQueue(16, new Comparator() {
+		open = new PriorityQueue<Cell>(16, new Comparator<Cell>() {
 			
 			public int compare(Cell c1, Cell c2) {
 			return c1.finalCost < c2.finalCost ? -1:
 			c1.finalCost > c2.finalCost ? 1 : 0;
 			}
-
-			@Override
-			public int compare(Object o1, Object o2) {
-				// TODO Auto-generated method stub
-				return 0;
-			}
 			});
 		
-		setStart(24, 2);
-		setEnd(3, 9);
+		setStart(3, 9);
+		setEnd(24, 2);
 		
 		for(int i = 0; i < 30; i++){
 			for(int j = 0; j < 26; j++){
@@ -138,7 +133,7 @@ public class AStarPathfinding {
 			}
 		}
 		
-		field[24][2].finalCost = 0;
+		field[3][9].finalCost = 0;
 		
 		
 		for (int i = 17; i < 24; i++){
@@ -155,8 +150,8 @@ public class AStarPathfinding {
 		System.out.println("Field: ");
         for(int i = 0; i < 30; i++){
             for(int j = 0; j < 26; j++){
-               if(i == 24 && j == 2) System.out.print("ST  "); //Start
-               else if(i == 3 && j == 9) System.out.print("ED  ");  //End
+               if(i == 3 && j == 9) System.out.print("ST  "); //Start
+               else if(i == 24 && j == 26) System.out.print("ED  ");  //End
                else if(field[i][j]!=null)System.out.printf("%-3d ", 0);
                else System.out.print("BL  "); 
             }
@@ -174,7 +169,8 @@ public class AStarPathfinding {
             System.out.println();
         }
         System.out.println();
-         
+         int num = 1;
+         double[] path = new double[255];
         if(closed[endi][endj]){
             //Trace back the path 
              System.out.println("Path: ");
@@ -182,9 +178,33 @@ public class AStarPathfinding {
              System.out.print(current);
              while(current.parent!=null){
                  System.out.print(" -> " + current.parent);
+                 path[num] = getPath(current.parent.i, current.parent.j, current.i, current.j, num);
                  current = current.parent;
+                 num += 1;
              } 
              System.out.println();
         }else System.out.println("No possible path");
+        return path;
  }
+	public static double getPath(int previ, int prevj, int curri, int currj, int num){
+		double path;
+		double x;
+		double y;
+		
+		x = previ - curri;
+		y = prevj - currj;
+		
+		if(x == 1 && y == 0){
+			path = 1;
+		}else if(x == 1 && y == 1){
+			path = 2;
+		}else if(x == 1 && y == -1){
+			path = 0;
+		}else if(x == 0 && y == 1){
+			path = 3;
+		}else{
+			path = -1;
+		}
+		return path;
+	}
 	}
