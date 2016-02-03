@@ -33,10 +33,10 @@ public class DriveSystem {
 	 * @param drv
 	 */
 	void drive(double[] drv){
-		cim1.set(-drv[0]);
-		cim2.set(-drv[0]);
-		cim3.set(drv[1]);
-		cim4.set(drv[1]);
+		cim1a.set(-drv[0]);
+		cim2a.set(-drv[0]);
+		cim3a.set(drv[1]);
+		cim4a.set(drv[1]);
 	}
 	
 	void quickdrive(double[] drv){
@@ -49,10 +49,10 @@ public class DriveSystem {
 	void moveDistance(double distance){
 		
 		while(true){
-			cim1.set(0.3);
-			cim2.set(0.3);
-			cim3.set(0.3);
-			cim4.set(0.3);
+			cim1a.set(0.3);
+			cim2a.set(0.3);
+			cim3a.set(0.3);
+			cim4a.set(0.3);
 		}
 		
 	}
@@ -61,17 +61,17 @@ public class DriveSystem {
 		s.gyroFeed(true);
 		if(rotation<0){
 			while(s.gyroFeed(false)<rotation){
-				cim1.set(-0.3);
-				cim2.set(-0.3);
-				cim3.set(0.3);
-				cim4.set(0.3);
+				cim1a.set(-0.3);
+				cim2a.set(-0.3);
+				cim3a.set(0.3);
+				cim4a.set(0.3);
 			}
 		}else if(rotation>0){
 			while(s.gyroFeed(false)<rotation){
-				cim1.set(0.3);
-				cim2.set(0.3);
-				cim3.set(-0.3);
-				cim4.set(-0.3);
+				cim1a.set(0.3);
+				cim2a.set(0.3);
+				cim3a.set(-0.3);
+				cim4a.set(-0.3);
 			}
 		}
 	}
