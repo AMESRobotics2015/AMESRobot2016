@@ -62,12 +62,9 @@ public class InputManager {
 	/**
 	 * Read game controller joystick to move the arm up and down.
 	 */
-	public void armInput(){
-		int pov = game.getPOV(1);
-		System.out.println(pov);
+	public double armInput(){
+		double armIn = 0.3 * game.getRawAxis(1);
+		return armIn;
 	}
 	
-	public void climberInput(){
-		
-	}
 }

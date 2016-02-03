@@ -105,7 +105,6 @@ public class Robot extends IterativeRobot {
     	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
     	EW.getCount(false);
-    	IM.armInput();
     }
     
     /**
