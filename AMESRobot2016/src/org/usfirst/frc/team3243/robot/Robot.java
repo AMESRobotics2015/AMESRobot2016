@@ -41,6 +41,11 @@ public class Robot extends IterativeRobot {
     //Grabber G;
     double degree;
     double distance;
+    
+    //Pathfinding
+    double[] path;
+    int pathStep;
+    boolean pathRunning;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -73,15 +78,20 @@ public class Robot extends IterativeRobot {
     	autoSelected = (String) chooser.getSelected();
 //		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
-		
+		path = AS.start();
+		pathRunning = true;
+		pathStep = 0;
     }
 
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+    	if (pathRunning) {
+    		pathRunning = DS.autoDrive(path, pathStep, S.gyroFeed(false));
+    		pathStep++;
+    	}
     	//grip.getNumberArray("FindBoulder/area",double[]) to get contour areas
-    	AS.start();
     	switch(autoSelected) {
     	case customAuto:
         //Put custom auto code here   

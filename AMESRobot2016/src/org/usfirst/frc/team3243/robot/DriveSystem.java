@@ -74,10 +74,40 @@ public class DriveSystem {
 				cim4.set(-0.3);
 			}
 		}
-		
-		
 	}
-	
+	//orient is current orientation
+	boolean autoDrive(double[] path,int step,double orient) {
+		//Assuming 0 is towards tower wall, increasing clockwise, degrees
+		double goalAngle;
+		double moveDist;
+		double rotation;
+		boolean worked = true;
+		if (path[step]==0) {
+			goalAngle = -45;
+			moveDist = Math.sqrt(2);
+		}
+		else if (path[step]==1) {
+			goalAngle = 0;
+			moveDist = 1;
+		}
+		else if (path[step]==2) {
+			goalAngle = 45;
+			moveDist = Math.sqrt(2);
+		}
+		else if (path[step]==3) {
+			goalAngle = 90;
+			moveDist = 1;
+		}
+		else {
+			goalAngle = orient;
+			moveDist = 0;
+			worked = false;
+		}
+		rotation = goalAngle-orient;
+		rotate(rotation);
+		moveDistance(moveDist);
+		return worked;
+	}
 	
 	
 	
