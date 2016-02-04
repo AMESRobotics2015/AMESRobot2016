@@ -28,7 +28,7 @@ public class Sensors {
 	{
 		camera = CameraServer.getInstance();
 		camera.setQuality(50);
-		camera.startAutomaticCapture("cam2");
+		camera.startAutomaticCapture("cam1");
 		Direction = new AnalogGyro(0);
 		Direction.initGyro();
 		Direction.calibrate();
