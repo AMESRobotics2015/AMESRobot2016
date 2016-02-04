@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
     	if (pathRunning) {
-    		pathRunning = DS.autoDrive(path, pathStep, S.gyroFeed(false));
+    		pathRunning = DS.autoDrive(path, pathStep);
     		pathStep++;
     	}
     	//grip.getNumberArray("FindBoulder/area",double[]) to get contour areas

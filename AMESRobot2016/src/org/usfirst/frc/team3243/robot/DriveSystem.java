@@ -58,7 +58,7 @@ public class DriveSystem {
 	}
 	
 	void rotate(double rotation){
-		//s.gyroFeed(true);
+		s.gyroFeed(true);
 		if(rotation<0){
 			while(s.gyroFeed(false)<rotation){
 				cim1a.set(-0.3);
@@ -76,7 +76,7 @@ public class DriveSystem {
 		}
 	}
 	//orient is current orientation
-	boolean autoDrive(double[] path,int step,double orient) {
+	boolean autoDrive(double[] path,int step) {
 		//Assuming 0 is towards tower wall, increasing clockwise, degrees
 		double goalAngle;
 		double moveDist;
@@ -99,12 +99,12 @@ public class DriveSystem {
 			moveDist = 1;
 		}
 		else {
-			goalAngle = orient;
+			goalAngle = 0;
 			moveDist = 0;
 			worked = false;
 		}
-		rotation = goalAngle-orient;
-		rotate(rotation);
+		
+		rotate(goalAngle);
 		moveDistance(moveDist);
 		return worked;
 	}
