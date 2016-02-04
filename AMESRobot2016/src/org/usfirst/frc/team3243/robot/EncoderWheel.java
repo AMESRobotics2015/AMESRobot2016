@@ -28,7 +28,7 @@ public class EncoderWheel {
 			rotations.reset();
 		}
 		count = rotations.get();
-		System.out.println(count);
+		//System.out.println(count);
 		return count;
 	}
 	

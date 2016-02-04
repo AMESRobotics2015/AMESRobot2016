@@ -29,6 +29,7 @@ public class Sensors {
 		camera = CameraServer.getInstance();
 		camera.setQuality(50);
 		camera.startAutomaticCapture("cam1");
+		Direction = new ADXRS450_Gyro();
 		Direction.calibrate();
 		
 		try{
