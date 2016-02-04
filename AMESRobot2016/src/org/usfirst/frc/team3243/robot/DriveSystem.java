@@ -76,37 +76,30 @@ public class DriveSystem {
 		}
 	}
 	//orient is current orientation
-	boolean autoDrive(double[] path,int step) {
-		//Assuming 0 is towards tower wall, increasing clockwise, degrees
-		double goalAngle;
-		double moveDist;
-		double rotation;
-		boolean worked = true;
-		if (path[step]==0) {
-			goalAngle = -45;
-			moveDist = Math.sqrt(2);
-		}
-		else if (path[step]==1) {
-			goalAngle = 0;
-			moveDist = 1;
-		}
-		else if (path[step]==2) {
-			goalAngle = 45;
-			moveDist = Math.sqrt(2);
-		}
-		else if (path[step]==3) {
-			goalAngle = 90;
-			moveDist = 1;
-		}
-		else {
-			goalAngle = 0;
-			moveDist = 0;
-			worked = false;
+	void autoDrive(double[] path) {
+		boolean running = true;
+		int i = 0;
+		double degree = 0;
+		double move = 0;
+		while(running){
+			if(path[i] == 0){
+				degree = -45;
+				move = Math.sqrt(2);
+			}else if(path[i] == 1){
+				degree = 0;
+				move = 1;
+			}else if(path[i] == 2){
+				degree = 45;
+				move = Math.sqrt(2);
+			}else if(path[i] == 3){
+				degree = 90;
+				move = 1;
+			}
+			rotate(degree);
+			moveDistance(move);
+			return;
 		}
 		
-		rotate(goalAngle);
-		moveDistance(moveDist);
-		return worked;
 	}
 	
 	
