@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 public class Sensors {
 	//protected static USBCamera watch;
 	protected static CameraServer camera;
-	protected static AnalogGyro Direction;
+	ADXRS450_Gyro Direction;
 	private static final String[] GRIP_ARGS = new String[] {//Move camera stuff to sensors class.
 	    	"/usr/local/frc/JRE/bin/java","-jar","/home/lvuser/grip.jar",
 	    	"/home/lvuser/FindBoulder.grip"
@@ -29,8 +29,6 @@ public class Sensors {
 		camera = CameraServer.getInstance();
 		camera.setQuality(50);
 		camera.startAutomaticCapture("cam1");
-		Direction = new AnalogGyro(0);
-		Direction.initGyro();
 		Direction.calibrate();
 		
 		try{
@@ -56,18 +54,13 @@ public class Sensors {
 		//System.out.println("Direction Center: " + Direction.getCenter());
 		//System.out.println("Current Angle: " + Direction.getAngle());
 		System.out.println( Direction.getAngle());
+		/*
 		if (128 < Direction.getAngle() && Direction.getAngle()< 132)
 		{
 		System.out.println( "DONE");
 		}
+		*/
 		return Direction.getAngle();
-	}
-	
-	/**
-	 * BEN PUT YOUR VISION GRIP STUFF HERE.
-	 */
-	public void vision(){
-		
 	}
 	
 }
