@@ -26,8 +26,9 @@ public class Sensors {
 	 */
 	public Sensors ()
 	{
-		//camera = CameraServer.getInstance();
-		//watch = new USBCamera();
+		camera = CameraServer.getInstance();
+		camera.setQuality(50);
+		camera.startAutomaticCapture("cam2");
 		Direction = new AnalogGyro(0);
 		Direction.initGyro();
 		Direction.calibrate();
@@ -39,15 +40,6 @@ public class Sensors {
         	e.printStackTrace();
         }
 		
-	}
-	
-	/**
-	 * Starts up the usb camera for the driver to see with.
-	 */
-	public void startCamera()
-	{
-		camera.setQuality(50);
-		camera.startAutomaticCapture("cam1");
 	}
 	
 	/**
