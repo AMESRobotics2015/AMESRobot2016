@@ -41,7 +41,7 @@ public class InputManager {
 	 * @return returns a ramped value.
 	 */
 	double ramp(double input) {
-		input = Math.pow(input, 3);
+		input = Math.pow(input, 3)/2;
 		if(input>1){
 			input = 1;
 		}
