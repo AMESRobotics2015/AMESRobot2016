@@ -22,7 +22,7 @@ public class AStarPathfinding {
 		}
 	}
 	
-	static Cell[][] field = new Cell[5][5];
+	static Cell[][] field = new Cell[30][26];
 	static PriorityQueue<Cell> open;
 	static boolean closed[][];
 	static int starti, startj;
