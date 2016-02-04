@@ -164,7 +164,7 @@ public class AStarPathfinding {
         AStar();
         System.out.println("\nScores for cells: ");
         for(int i = 0; i < 30; ++i){
-            for(int j = 0; j < 30; ++j){
+            for(int j = 0; j < 26; ++j){
                 if(field[i][j]!=null)System.out.printf("%-3d ", field[i][j].finalCost);
                 else System.out.print("BL  ");
             }
