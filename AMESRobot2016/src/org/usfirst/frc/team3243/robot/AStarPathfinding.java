@@ -142,7 +142,7 @@ public class AStarPathfinding {
 			}
 		}
 		for (int i = 1; i < 25; i++){
-			for (int j = 23; j < 27; j++){
+			for (int j = 23; j < 26; j++){
 				setBlocked(i, j);
 			}
 		}
