@@ -22,11 +22,11 @@ public class DriveSystem {
 	Sensors s;
 	EncoderWheel ew;
 	EncoderWheel ewa;
-	DriveSystem(Sensors sensor, EncoderWheel encoderwheela, EncoderWheel encoderwheelb){
+	/*DriveSystem(Sensors sensor, EncoderWheel encoderwheela, EncoderWheel encoderwheelb){
 		s = sensor;
 		ew = encoderwheela;
 		ewa = encoderwheelb;
-	}
+	}*/
 	
 	/**
 	 * Our drive thing - sends the inputs we want to use into the various motors.

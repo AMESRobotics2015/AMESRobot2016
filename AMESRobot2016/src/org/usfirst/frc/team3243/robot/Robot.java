@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
         S = new Sensors();
-        DS = new DriveSystem(S,EW,EWA);
+        DS = new DriveSystem();
         RM = new RobotMap();
         AS = new AStarPathfinding();
     }
