@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.Victor;
 public class DriveSystem {
 	public static final int CARRY_IN=-1,CARRY_STOP=0,CARRY_OUT=1;
 	private double ballSpeed = 0.5;
-	Victor cim1 = new Victor(0);
+	/*Victor cim1 = new Victor(0);
 	Victor cim2 = new Victor(1);
 	Victor cim3 = new Victor(2);
-	Victor cim4 = new Victor(3);
+	Victor cim4 = new Victor(3);*/
 	Talon cim1a = new Talon(0);
 	Talon cim2a = new Talon(1);
 	Talon cim3a = new Talon(2);
