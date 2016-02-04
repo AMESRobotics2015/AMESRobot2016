@@ -74,8 +74,10 @@ public class AStarPathfinding {
 				CheckandUpdateCost(current, t, current.finalCost + Cost_VH);
 				
 				if(current.j - 1 < field[0].length){
-					t = field[current.i - 1][current.j - 1];
-					CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
+					if(current.j > 0){
+						t = field[current.i - 1][current.j - 1];
+						CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
+					}
 				}
 				
 				if(current.j + 1 < field[0].length){
