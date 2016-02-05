@@ -25,5 +25,9 @@ void pushIn(int buttonCount){
 	void ballCarrier(int direction){
 		
 	}
+	public void doGrab (int grabSpeed) {
+		limitswitch.get();
+		cimBall.set(grabSpeed);
+	}
 
 }
