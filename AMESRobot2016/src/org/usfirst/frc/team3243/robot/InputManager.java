@@ -17,7 +17,7 @@ public class InputManager {
 	 * @return
 	 */
 	double[] input() {
-		in[0] = ramp(deadZone(move.getRawAxis(1)));
+		in[0] = .6*ramp(deadZone(move.getRawAxis(1)));
 		in[1] = ramp(deadZone(move.getRawAxis(3)));		
 		return in;
 	}
