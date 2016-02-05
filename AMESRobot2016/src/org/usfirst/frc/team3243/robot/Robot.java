@@ -118,6 +118,7 @@ public class Robot extends IterativeRobot {
     		DS.startPortDrive();
     	}
     	DS.updatePortDrive(GA);//Call regardless of whether we're actually driving under the port door.
+    	S.switchCam(IM.frontOrBack);
     }
     
     /**
