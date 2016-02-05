@@ -46,8 +46,8 @@ public class DriveSystem {
 	void drive(double[] drv){
 		cim1a.set(-drv[0]);
 		cim2a.set(-drv[0]);
-		cim3a.set(drv[1]);
-		cim4a.set(drv[1]);
+		cim3a.set(.7*drv[1]);
+		cim4a.set(.7*drv[1]);
 	}
 	
 	void quickdrive(double[] drv){
