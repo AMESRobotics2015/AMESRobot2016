@@ -57,13 +57,13 @@ public class DriveSystem {
 		cim4a.set(drv[1]);
 	}
 	
-	void moveDistance(double distance){
+	void moveDistance(double distance, double x){
 		
 		while(true){
-			cim1a.set(0.3);
-			cim2a.set(0.3);
-			cim3a.set(0.3);
-			cim4a.set(0.3);
+			cim1a.set(x);
+			cim2a.set(x);
+			cim3a.set(x);
+			cim4a.set(x);
 		}
 		
 	}
@@ -107,12 +107,32 @@ public class DriveSystem {
 				move = 1;
 			}
 			rotate(degree);
-			moveDistance(move);
+			moveDistance(move, 0.3);
 			return;
 		}
 		
 	}
+	boolean portDriving;
+	double portSpeed,portDistance,portArmSpeed;
+	double portCompDistance;//completed distance
+	void startPortDrive(){
+		portDriving = true;
+		portCompDistance = 0;
+	}
 	
+	boolean isPortDriving() {
+		return portDriving;
+	}
 	
-	
+	void updatePortDrive(GameArm arm) {
+		double portDistSegment = 0.1;
+		if (portDriving) {
+			this.moveDistance(portDistSegment, portSpeed);
+			arm.moveArm(portArmSpeed);
+			portCompDistance += portDistSegment;
+			if (portCompDistance >= portDistance) {
+				portDriving = false;
+			}
+		}
+	}
 }
