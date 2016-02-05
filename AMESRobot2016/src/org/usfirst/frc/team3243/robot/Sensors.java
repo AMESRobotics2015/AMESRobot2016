@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 public class Sensors {
 	//protected static USBCamera watch;
 	protected static CameraServer camera;
+	CameraServer cam;
 	ADXRS450_Gyro Direction;
 	private static final String[] GRIP_ARGS = new String[] {//Move camera stuff to sensors class.
 	    	"/usr/local/frc/JRE/bin/java","-jar","/home/lvuser/grip.jar",
@@ -24,11 +25,18 @@ public class Sensors {
 	/**
 	 * Constructor to set up our various sensors.
 	 */
-	public Sensors ()
+	public Sensors (boolean camcam)
 	{
-		camera = CameraServer.getInstance();
-		camera.setQuality(50);
-		camera.startAutomaticCapture("cam1");
+		if(camcam){
+			camera = CameraServer.getInstance();
+			camera.setQuality(50);	
+			camera.startAutomaticCapture("cam2");
+		}else{
+			cam = CameraServer.getInstance();
+			cam.setQuality(50);
+			cam.startAutomaticCapture("cam1");
+		}
+			
 		Direction = new ADXRS450_Gyro();
 		Direction.calibrate();
 		
@@ -38,12 +46,16 @@ public class Sensors {
         catch (IOException e){
         	e.printStackTrace();
         }
-		
 	}
 	
 	/**
 	 * This method will get the feedback from the gyro to be used elswhere.
 	 */
+	
+	public void cam(boolean camon){
+		
+	}
+	
 	public double gyroFeed(boolean reset){
 		//getAngle method returns a value between negative infinity and infinity representing the deviation in degrees from the angle 0
 		//for example, if turn the gyro two full turns to the left, it will return (-720). 

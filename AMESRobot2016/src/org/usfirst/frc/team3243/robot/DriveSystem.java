@@ -11,22 +11,33 @@ import edu.wpi.first.wpilibj.Victor;
 public class DriveSystem {
 	public static final int CARRY_IN=-1,CARRY_STOP=0,CARRY_OUT=1;
 	private double ballSpeed = 0.5;
-	/*Victor cim1 = new Victor(0);
-	Victor cim2 = new Victor(1);
-	Victor cim3 = new Victor(2);
-	Victor cim4 = new Victor(3);*/
-	Talon cim1a = new Talon(0);
-	Talon cim2a = new Talon(1);
-	Talon cim3a = new Talon(2);
-	Talon cim4a = new Talon(3);
+	Victor cim1;
+	Victor cim2;
+	Victor cim3;
+	Victor cim4;
+	Talon cim1a;
+	Talon cim2a;
+	Talon cim3a;
+	Talon cim4a;
 	Sensors s;
 	EncoderWheel ew;
 	EncoderWheel ewa;
-	/*DriveSystem(Sensors sensor, EncoderWheel encoderwheela, EncoderWheel encoderwheelb){
+	DriveSystem(Sensors sensor, EncoderWheel encoderwheela, EncoderWheel encoderwheelb, boolean quickbot){
 		s = sensor;
 		ew = encoderwheela;
 		ewa = encoderwheelb;
-	}*/
+		if(quickbot){
+			cim1a = new Talon(0);
+			cim2a = new Talon(1);
+			cim3a = new Talon(2);
+			cim4a = new Talon(3);
+		}else{
+			cim1 = new Victor(0);
+			cim2 = new Victor(1);
+			cim3 = new Victor(2);
+			cim4 = new Victor(3);
+		}
+	}
 	
 	/**
 	 * Our drive thing - sends the inputs we want to use into the various motors.

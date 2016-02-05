@@ -59,8 +59,8 @@ public class Robot extends IterativeRobot {
         IM = new InputManager();
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
-        S = new Sensors();
-        DS = new DriveSystem();
+        S = new Sensors(true);
+        DS = new DriveSystem(S, EW, EWA, true);
         RM = new RobotMap();
         AS = new AStarPathfinding();
     }
@@ -106,7 +106,6 @@ public class Robot extends IterativeRobot {
      * Press the y button to reset the gyro value; in other words, set the direction the robot is currently facing as 0
      * */
     public void teleopPeriodic() {
-    	//S.startCamera();
     	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
     	EW.getCount(false);
