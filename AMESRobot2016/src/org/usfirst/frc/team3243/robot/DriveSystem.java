@@ -113,7 +113,7 @@ public class DriveSystem {
 		
 	}
 	boolean portDriving;
-	double portSpeed,portDistance,portArmSpeed;
+	double portSpeed=0.1,portDistance=2,portArmSpeed=0.3;
 	double portCompDistance;//completed distance
 	void startPortDrive(){
 		portDriving = true;
