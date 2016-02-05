@@ -11,7 +11,7 @@ public class InputManager {
 	Joystick move = new Joystick(0);
 	Joystick game = new Joystick(1);
 	double[] in = new double[2];
-	int suckIn = 0;
+	int suckIn = 0, frontOrBack = 0;
 	/**
 	 * Method that will return the final drive array to be sent to the motor control class.
 	 * @return
@@ -54,6 +54,14 @@ public class InputManager {
 			suckIn++;
 		}
 		return suckIn;
+	}
+	
+	public int switchCam() {
+		if(move.getRawButton(2/*controller pin*/))
+		{
+			frontOrBack++;
+		}
+		return frontOrBack;
 	}
 	
 	/**
