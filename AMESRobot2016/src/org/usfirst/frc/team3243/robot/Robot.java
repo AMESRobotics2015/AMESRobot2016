@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team3243.robot;
 
 import java.io.IOException;
@@ -61,7 +60,7 @@ public class Robot extends IterativeRobot {
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
         S = new Sensors(true);
-        DS = new DriveSystem(S, EW, EWA, false);
+        DS = new DriveSystem(S, EW, EWA, true);
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
@@ -109,14 +108,16 @@ public class Robot extends IterativeRobot {
      * Press the y button to reset the gyro value; in other words, set the direction the robot is currently facing as 0
      * */
     public void teleopPeriodic() {
-    	DS.drive(IM.input());
+    	if (!DS.isPortDriving()) {//If not driving under port door
+    		DS.drive(IM.input());
+    	}
     	S.gyroFeed(IM.move.getRawButton(4));
     	EW.getCount(false);
     	if (IM.game.getRawButton(4)) {
     		DS.startPortDrive();
     	}
     	DS.updatePortDrive(GA);//Call regardless of whether we're actually driving under the port door.
-    	S.switchCam(IM.frontOrBack, IM);
+    	S.switchCam(IM.frontOrBack);
     }
     
     /**
