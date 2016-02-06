@@ -70,17 +70,8 @@ public class Sensors {
 		return Direction.getAngle();
 	}
 	
-	public void switchCam(int Front)
-	{
-		
-		if(Front % 2== 0){	
-			camera.startAutomaticCapture("cam2");
-		}
-		if(Front % 2 == 1) 
-		{
-			cameraBack.startAutomaticCapture("cam1");
-		}
+	public void switchCam(int Front, InputManager IM){
+		camera.startAutomaticCapture("cam1");
+		cameraBack.startAutomaticCapture("cam2");
 	}
-	
-	
 }
