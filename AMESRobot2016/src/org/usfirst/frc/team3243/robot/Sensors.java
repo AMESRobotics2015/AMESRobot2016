@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 public class Sensors {
 	//protected static USBCamera watch;
 	protected static CameraServer camera;
-	CameraServer cam;
 	ADXRS450_Gyro Direction;
 	private static final String[] GRIP_ARGS = new String[] {//Move camera stuff to sensors class.
 	    	"/usr/local/frc/JRE/bin/java","-jar","/home/lvuser/grip.jar",
@@ -31,6 +30,9 @@ public class Sensors {
 			
 		Direction = new ADXRS450_Gyro();
 		Direction.calibrate();
+		camera = CameraServer.getInstance();
+		camera.setQuality(50);
+		camera.startAutomaticCapture("cam1");
 		
 		try{
         	Runtime.getRuntime().exec(GRIP_ARGS);
@@ -67,21 +69,9 @@ public class Sensors {
 		*/
 		return Direction.getAngle();
 	}
+		
+			
 	
-	public void switchCam(int Front)
-	{
-		if(Front % 2== 0){
-			camera = CameraServer.getInstance();
-			camera.setQuality(50);	
-			camera.startAutomaticCapture("cam1");
-		}
-		if(Front % 2 == 1) 
-		{
-			cam = CameraServer.getInstance();
-			cam.setQuality(50);
-			cam.startAutomaticCapture("cam2");
-		}
-	}
 	
 	
 }
