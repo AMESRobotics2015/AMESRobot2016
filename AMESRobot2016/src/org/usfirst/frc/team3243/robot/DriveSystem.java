@@ -44,10 +44,10 @@ public class DriveSystem {
 	 * @param drv
 	 */
 	void drive(double[] drv){
-		cim1.set(drv[0]);
-		cim2.set(drv[0]);//-drv[0]);
-		cim3.set(-drv[1]);//drv[1]);
-		cim4.set(-drv[1]);
+		cim1.set(-drv[1]);
+		cim2.set(-drv[1]);//-drv[0]);
+		cim3.set(drv[0]);//drv[1]);
+		cim4.set(drv[0]);
 	}
 	
 	void quickdrive(double[] drv){
