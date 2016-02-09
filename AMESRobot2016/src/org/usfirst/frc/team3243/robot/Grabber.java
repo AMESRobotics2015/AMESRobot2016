@@ -19,7 +19,9 @@ void pushIn(boolean buttonCount){
 		cimBall.set(0.2);
 		//	}
 		}
-		else cimBall.set(0);
+		else {
+			cimBall.set(0);
+		}
 		
 	}
 	void ballCarrier(int direction){
