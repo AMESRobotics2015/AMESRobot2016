@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj.Victor;
  *
  */
 public class DriveSystem {
-	public static final int CARRY_IN=-1,CARRY_STOP=0,CARRY_OUT=1;
-	private double ballSpeed = 0.5;
 	Victor cim1;
 	Victor cim2;
 	Victor cim3;

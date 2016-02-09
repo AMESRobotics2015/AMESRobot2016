@@ -3,8 +3,7 @@ import java.util.*;
 
 
 public class AStarPathfinding {
-	public static final int Cost_Diagonal = 14;
-	public static final int Cost_VH = 10;
+	
 	
 	static class Cell{
 		int heuristicCost = 0;
@@ -71,43 +70,43 @@ public class AStarPathfinding {
 			Cell t;
 			if(current.i - 1 >= 0){
 				t = field[current.i - 1][current.j];
-				CheckandUpdateCost(current, t, current.finalCost + Cost_VH);
+				CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_VH);
 				
 				if(current.j - 1 < field[0].length){
 					if(current.j > 0){
 						t = field[current.i - 1][current.j - 1];
-						CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
+						CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_Diagonal);
 					}
 				}
 				
 				if(current.j + 1 < field[0].length){
 					t = field[current.i - 1][current.j + 1];
-					CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal);
+					CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_Diagonal);
 				}
 			}
 			
 			if(current.j-1>=0){
                 t = field[current.i][current.j-1];
-                CheckandUpdateCost(current, t, current.finalCost + Cost_VH); 
+                CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_VH); 
             }
 
             if(current.j+1<field[0].length){
                 t = field[current.i][current.j+1];
-                CheckandUpdateCost(current, t, current.finalCost + Cost_VH); 
+                CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_VH); 
             }
 
             if(current.i+1<field.length){
                 t = field[current.i+1][current.j];
-                CheckandUpdateCost(current, t, current.finalCost + Cost_VH); 
+                CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_VH); 
 
                 if(current.j-1>=0){
                     t = field[current.i+1][current.j-1];
-                    CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
+                    CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_Diagonal); 
                 }
                 
                 if(current.j+1<field[0].length){
                    t = field[current.i+1][current.j+1];
-                   CheckandUpdateCost(current, t, current.finalCost + Cost_Diagonal); 
+                   CheckandUpdateCost(current, t, current.finalCost + RobotMap.Cost_Diagonal); 
                 }  
 		}
 		
