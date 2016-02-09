@@ -59,13 +59,20 @@ public class DriveSystem {
 	
 	void moveDistance(double distance, double x){
 		
+		while(ew.getDistance()<distance && ewa.getDistance()<distance){
+			cim1a.set(x);
+			cim2a.set(x);
+			cim3a.set(x);
+			cim4a.set(x);
+		}
+		/*
 		while(true){
 			cim1a.set(x);
 			cim2a.set(x);
 			cim3a.set(x);
 			cim4a.set(x);
 		}
-		
+		*/
 	}
 	
 	void rotate(double rotation){
