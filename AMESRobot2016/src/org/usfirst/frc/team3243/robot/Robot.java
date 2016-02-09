@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
     EncoderWheel EWA;
     AStarPathfinding AS;
     GameArm GA;
+    Grabber G;
     //Grabber G;
     double degree;
     double distance;
@@ -64,6 +65,7 @@ public class Robot extends IterativeRobot {
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
+        G = new Grabber();
         
     }
     
@@ -110,6 +112,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
+    	G.pushIn(IM.game.getRawButton(2));
     }
     
     /**
