@@ -92,7 +92,7 @@ public class DriveSystem {
 		int i = 0;
 		double degree = 0;
 		double move = 0;
-		while(running){
+		while(i<path.length){
 			if(path[i] == 0){
 				degree = -45;
 				move = Math.sqrt(2);
@@ -108,7 +108,7 @@ public class DriveSystem {
 			}
 			rotate(degree);
 			moveDistance(move, 0.3);
-			return;
+			i++;
 		}
 		
 	}
