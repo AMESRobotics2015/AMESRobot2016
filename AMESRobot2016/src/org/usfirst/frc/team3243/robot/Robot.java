@@ -112,7 +112,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	DS.drive(IM.input());
     	S.gyroFeed(IM.move.getRawButton(4));
-    	G.pushIn(IM.game.getRawButton(2));
+    	G.pullIn(IM);
+    	//G.pushOut(IM.game.getRawButton(3));
     }
     
     /**

@@ -32,7 +32,7 @@ public class Sensors {
 		//Direction.calibrate();
 		camera = CameraServer.getInstance();
 		camera.setQuality(50);
-		camera.startAutomaticCapture("cam2");
+		camera.startAutomaticCapture("cam0");
 		
 		try{
         	Runtime.getRuntime().exec(GRIP_ARGS);
