@@ -9,13 +9,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /*
- * Drive - Done.
+ * Drive - Done. Finished on 2/1/16
  * Ball handling - test. Finish by 2/5/16
- * Camera - Done.
- * Arm - test.
- * Climber - need to do.
- * Auto - Gyro test + Encoders test. Grabber code done.
- * Pathfinding - test.
+ * Camera - Done. Finish by 2/1/16
+ * Arm - need to do. 2/5/16 (tentative)
+ * Climber - need to do. 2/5/16 (tentative)
+ * Auto - Gyro - fix for new (2/3/16) + Encoders (2/7/16) test. Also create grabber code for auto (2/6/15).
+ * Pathfinding integration - (2/9/16)
  */
 
 /**
@@ -38,7 +38,6 @@ public class Robot extends IterativeRobot {
     EncoderWheel EWA;
     AStarPathfinding AS;
     GameArm GA;
-    Grabber G;
     //Grabber G;
     double degree;
     double distance;
@@ -65,7 +64,6 @@ public class Robot extends IterativeRobot {
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
-        G = new Grabber();
         
     }
     
@@ -110,10 +108,29 @@ public class Robot extends IterativeRobot {
      * Press the y button to reset the gyro value; in other words, set the direction the robot is currently facing as 0
      * */
     public void teleopPeriodic() {
-    	DS.drive(IM.input());
+    //	if (!DS.isPortDriving()) {//If not driving under port door
+    		DS.drive(IM.input());
+    //	}
+    		//Weird things involving rotation: robot crashes and code "disappears" for 
+    	/*if (IM.move.getRawButton(5)) {
+    		DS.rotate(-30.);
+    	}
+    	if (IM.move.getRawButton(6)) {
+    		DS.rotate(30.);
+    	}
+    	if (IM.move.getRawButton(7)) {
+    		DS.rotate(-45.);
+    	}
+    	if (IM.move.getRawButton(8)) {
+    		DS.rotate(45.);
+    	}*/
     	S.gyroFeed(IM.move.getRawButton(4));
-    	G.pullIn(IM);
-    	//G.pushOut(IM.game.getRawButton(3));
+    	//EW.getCount(false);
+    	//if (IM.game.getRawButton(4)) {
+    	//	DS.startPortDrive();
+    	//}
+    	//DS.updatePortDrive(GA);//Call regardless of whether we're actually driving under the port door.
+    	
     }
     
     /**

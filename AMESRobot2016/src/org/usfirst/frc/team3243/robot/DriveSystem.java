@@ -76,7 +76,7 @@ public class DriveSystem {
 	void rotate(double rotation){
 		s.gyroFeed(true);
 		if(rotation<0){
-			while(s.gyroFeed(false)<rotation){
+			while(s.gyroFeed(false)>rotation){
 				cim1a.set(-0.3);
 				cim2a.set(-0.3);
 				cim3a.set(0.3);
