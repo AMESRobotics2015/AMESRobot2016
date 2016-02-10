@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
         S = new Sensors(true);
-        DS = new DriveSystem(S, EW, EWA, false);
+        DS = new DriveSystem(S, EW, EWA, true);
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-    	DS.autoDrive(AS.start());
+    	//DS.autoDrive(AS.start());
     	//grip.getNumberArray("FindBoulder/area",double[]) to get contour areas
     	switch(autoSelected) {
     	case customAuto:
@@ -95,7 +95,7 @@ public class Robot extends IterativeRobot {
             break;
     	case defaultAuto:
     	default:
-    		DS.moveDistance(5,0.3);
+    		//DS.moveDistance(5,0.3);
     		DS.rotate(20);
     		
     	//Put default auto code here
