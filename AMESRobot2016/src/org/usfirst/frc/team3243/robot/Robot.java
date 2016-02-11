@@ -109,7 +109,7 @@ public class Robot extends IterativeRobot {
     		//Get step we're on.
     		A.stepNum();
     		//Do it.
-    		DS.quickdrive(A.Step());
+    		//DS.quickdrive(A.Step());
     		//Then stop.
     		DS.stop();
     		

@@ -4,12 +4,14 @@ public class Auto {
 
 	DriveSystem D;
 	Gyro G;
+	RobotMap r;
 	int step = 0;
-	double[] rotate;
+	double[] rotate = new double[4];
 	double angleRotate;
 	public Auto(DriveSystem d, Gyro g){
 		D = d;
 		G = g;
+		r = new RobotMap();
 	}
 	
 	public double update(){
@@ -42,11 +44,11 @@ public class Auto {
 			
 		}
 	
-	public int stepNum(){
+	void stepNum(){
 		if(update()<angleRotate-5 && update()>angleRotate+5){
 			step++;
 		}
-		return step;
+		System.out.println(step);
 	}
 	
 	public double[] Step(){
@@ -62,15 +64,15 @@ public class Auto {
 	
 	void rotateInterface(double angle){
 		if(angle>0){
-			rotate[0]=0.3;
-			rotate[1]=0.3;
-			rotate[2]=0.3;
-			rotate[3]=0.3;
+			rotate[0]=r.autoSpeed;
+			rotate[1]=r.autoSpeed;
+			rotate[2]=r.autoSpeed;
+			rotate[3]=r.autoSpeed;
 		}else if(angle<0){
-			rotate[0]=-0.3;
-			rotate[1]=-0.3;
-			rotate[2]=-0.3;
-			rotate[3]=-0.3;
+			rotate[0]=-r.autoSpeed;
+			rotate[1]=-r.autoSpeed;
+			rotate[2]=-r.autoSpeed;
+			rotate[3]=-r.autoSpeed;
 		}
 	}
 }
