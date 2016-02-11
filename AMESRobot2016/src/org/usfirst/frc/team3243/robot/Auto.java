@@ -4,6 +4,9 @@ public class Auto {
 
 	DriveSystem D;
 	Gyro G;
+	int step = 0;
+	double[] rotate;
+	double angleRotate;
 	public Auto(DriveSystem d, Gyro g){
 		D = d;
 		G = g;
@@ -39,4 +42,35 @@ public class Auto {
 			
 		}
 	
+	public int stepNum(){
+		if(update()<angleRotate-5 && update()>angleRotate+5){
+			step++;
+		}
+		return step;
+	}
+	
+	public double[] Step(){
+		switch(step){
+		case(0):
+			angleRotate = 20; break;
+		case(1):
+			angleRotate = -20; break;
+		}
+		rotateInterface(angleRotate);
+		return rotate;
+	}
+	
+	void rotateInterface(double angle){
+		if(angle>0){
+			rotate[0]=0.3;
+			rotate[1]=0.3;
+			rotate[2]=0.3;
+			rotate[3]=0.3;
+		}else if(angle<0){
+			rotate[0]=-0.3;
+			rotate[1]=-0.3;
+			rotate[2]=-0.3;
+			rotate[3]=-0.3;
+		}
+	}
 }

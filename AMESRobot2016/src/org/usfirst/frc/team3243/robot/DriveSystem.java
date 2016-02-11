@@ -60,14 +60,6 @@ public class DriveSystem {
 		cim4a.set(0);
 	}
 	
-	void moveDistance(double distance, double speed){
-		
-	}
-	
-	void rotate(double rotation){
-		
-	}
-	
 	boolean portDriving;
 	double portSpeed=0.1,portDistance=2,portArmSpeed=0.3;
 	double portCompDistance;//completed distance
@@ -83,7 +75,7 @@ public class DriveSystem {
 	void updatePortDrive(GameArm arm) {
 		double portDistSegment = 0.1;
 		if (portDriving) {
-			this.moveDistance(portDistSegment, portSpeed);
+			//this.moveDistance(portDistSegment, portSpeed);
 			arm.moveArm(portArmSpeed);
 			portCompDistance += portDistSegment;
 			if (portCompDistance >= portDistance) {

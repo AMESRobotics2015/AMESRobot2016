@@ -107,8 +107,9 @@ public class Robot extends IterativeRobot {
     		//Update functionality
     		A.update();
     		//Get step we're on.
-    		//Send commands to various groups.
+    		A.stepNum();
     		//Do it.
+    		DS.quickdrive(A.Step());
     		//Then stop.
     		DS.stop();
     		
