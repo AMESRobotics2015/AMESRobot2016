@@ -54,6 +54,12 @@ public class DriveSystem {
 		cim3a.set(drv[1]);
 		cim4a.set(drv[1]);
 	}
+	void stop(){
+		cim1a.set(0);
+		cim2a.set(0);
+		cim3a.set(0);
+		cim4a.set(0);
+	}
 	
 	void moveDistance(double distance, double x){
 		
@@ -74,22 +80,26 @@ public class DriveSystem {
 	}
 	
 	void rotate(double rotation){
+		
 		s.gyroFeed(true);
 		if(rotation<0){
 			while(s.gyroFeed(false)>rotation){
+				
 				cim1a.set(-0.3);
 				cim2a.set(-0.3);
-				cim3a.set(0.3);
-				cim4a.set(0.3);
-			}
-		}else if(rotation>0){
-			while(s.gyroFeed(false)<rotation){
-				cim1a.set(0.3);
-				cim2a.set(0.3);
 				cim3a.set(-0.3);
 				cim4a.set(-0.3);
 			}
+		}else if(rotation>0){
+			while(s.gyroFeed(false)<rotation){
+				//if(s.gyroFeed(false)<)
+				cim1a.set(0.3);
+				cim2a.set(0.3);
+				cim3a.set(0.6);
+				cim4a.set(0.6);
+			}
 		}
+		
 	}
 	//orient is current orientation
 	void autoDrive(double[] path) {

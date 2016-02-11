@@ -68,7 +68,7 @@ public class Sensors {
 		System.out.println( "DONE");
 		}
 		*/
-		System.out.println("Angle: "+Direction.getAngle());
+		//System.out.println("Angle: "+Direction.getAngle());
 		return Direction.getAngle();
 	}
 		

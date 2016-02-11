@@ -38,8 +38,9 @@ public class Robot extends IterativeRobot {
     EncoderWheel EWA;
     AStarPathfinding AS;
     GameArm GA;
+    Timer t;
     //Grabber G;
-    double degree;
+    double degree = 90;
     double distance;
     
     //Pathfinding
@@ -64,6 +65,7 @@ public class Robot extends IterativeRobot {
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
+        t = new Timer();
         
     }
     
@@ -81,6 +83,7 @@ public class Robot extends IterativeRobot {
 //		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
 		pathStep = 0;
+		S.gyroFeed(true);
     }
 
     /**
@@ -96,7 +99,10 @@ public class Robot extends IterativeRobot {
     	case defaultAuto:
     	default:
     		//DS.moveDistance(5,0.3);
-    		DS.rotate(20);
+    		if(S.gyroFeed(false)<degree){
+    			DS.rotate(degree);
+    		}
+    		DS.stop();
     		
     	//Put default auto code here
             break;
@@ -109,7 +115,7 @@ public class Robot extends IterativeRobot {
      * */
     public void teleopPeriodic() {
     //	if (!DS.isPortDriving()) {//If not driving under port door
-    		DS.drive(IM.input());
+    		DS.quickdrive(IM.input());
     //	}
     		//Weird things involving rotation: robot crashes and code "disappears" for 
     	/*if (IM.move.getRawButton(5)) {
@@ -124,6 +130,7 @@ public class Robot extends IterativeRobot {
     	if (IM.move.getRawButton(8)) {
     		DS.rotate(45.);
     	}*/
+    		
     	S.gyroFeed(IM.move.getRawButton(4));
     	//EW.getCount(false);
     	//if (IM.game.getRawButton(4)) {
