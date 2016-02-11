@@ -17,11 +17,9 @@ public class DriveSystem {
 	Talon cim2a;
 	Talon cim3a;
 	Talon cim4a;
-	Gyro G;
 	EncoderWheel ew;
 	EncoderWheel ewa;
-	DriveSystem(Gyro gyro, EncoderWheel encoderwheela, EncoderWheel encoderwheelb, boolean quickbot){
-		G = gyro;
+	DriveSystem(EncoderWheel encoderwheela, EncoderWheel encoderwheelb, boolean quickbot){
 		ew = encoderwheela;
 		ewa = encoderwheelb;
 		if(quickbot){
@@ -70,32 +68,6 @@ public class DriveSystem {
 		
 	}
 	
-	//orient is current orientation
-	void autoDrive(double[] path) {
-		boolean running = true;
-		int i = 0;
-		double degree = 0;
-		double move = 0;
-		while(i<path.length){
-			if(path[i] == 0){
-				degree = -45;
-				move = Math.sqrt(2);
-			}else if(path[i] == 1){
-				degree = 0;
-				move = 1;
-			}else if(path[i] == 2){
-				degree = 45;
-				move = Math.sqrt(2);
-			}else if(path[i] == 3){
-				degree = 90;
-				move = 1;
-			}
-			rotate(degree);
-			moveDistance(move, 0.3);
-			i++;
-		}
-		
-	}
 	boolean portDriving;
 	double portSpeed=0.1,portDistance=2,portArmSpeed=0.3;
 	double portCompDistance;//completed distance

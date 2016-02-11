@@ -2,6 +2,7 @@ package org.usfirst.frc.team3243.robot;
 
 import java.io.IOException;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -38,6 +39,8 @@ public class Robot extends IterativeRobot {
     AStarPathfinding AS;
     GameArm GA;
     Gyro G;
+    Auto A;
+    CameraServer cam;
     //Grabber G;
     double degree = 90;
     double distance;
@@ -56,14 +59,21 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
+        /*
+        cam = CameraServer.getInstance();
+        cam.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        cam.startAutomaticCapture("cam0");
+        */
         IM = new InputManager();
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
         G = new Gyro();
-        DS = new DriveSystem(G, EW, EWA, true);
+        DS = new DriveSystem(EW, EWA, true);
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
+        A = new Auto(DS,G);
         
     }
     
@@ -93,9 +103,12 @@ public class Robot extends IterativeRobot {
             break;
     	case defaultAuto:
     	default:
-    		//if(S.gyroFeed(false)<degree){
-    			DS.rotate(degree);
-    		//}
+    		//Update functionality
+    		A.update();
+    		//Get step we're on.
+    		//Send commands to various groups.
+    		//Do it.
+    		//Then stop.
     		DS.stop();
     		
     	//Put default auto code here
