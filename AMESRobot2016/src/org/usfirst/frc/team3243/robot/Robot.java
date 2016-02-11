@@ -44,11 +44,12 @@ public class Robot extends IterativeRobot {
     //Grabber G;
     double degree = 90;
     double distance;
-    
+    String camx;
     //Pathfinding
     double[] path;
     int pathStep;
     boolean pathRunning;
+    boolean change;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -132,7 +133,19 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-    
+    	if(IM.move.getRawButton(7)){
+    		if(change){
+    			change = false;
+    		}else if(!change){
+    			change = true;
+    		}
+    	}
+    	if(change){
+    		camx = "cam0";
+    	}else if(!change){
+    		camx = "cam1";
+    	}
+    	cam.startAutomaticCapture(camx);
     }
     
 }
