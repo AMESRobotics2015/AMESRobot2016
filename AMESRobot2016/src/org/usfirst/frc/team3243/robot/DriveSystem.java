@@ -17,11 +17,11 @@ public class DriveSystem {
 	Talon cim2a;
 	Talon cim3a;
 	Talon cim4a;
-	Sensors s;
+	Gyro G;
 	EncoderWheel ew;
 	EncoderWheel ewa;
-	DriveSystem(Sensors sensor, EncoderWheel encoderwheela, EncoderWheel encoderwheelb, boolean quickbot){
-		s = sensor;
+	DriveSystem(Gyro gyro, EncoderWheel encoderwheela, EncoderWheel encoderwheelb, boolean quickbot){
+		G = gyro;
 		ew = encoderwheela;
 		ewa = encoderwheelb;
 		if(quickbot){
@@ -54,6 +54,7 @@ public class DriveSystem {
 		cim3a.set(drv[1]);
 		cim4a.set(drv[1]);
 	}
+	
 	void stop(){
 		cim1a.set(0);
 		cim2a.set(0);
@@ -61,46 +62,14 @@ public class DriveSystem {
 		cim4a.set(0);
 	}
 	
-	void moveDistance(double distance, double x){
+	void moveDistance(double distance, double speed){
 		
-		while(ew.getDistance()<distance && ewa.getDistance()<distance){
-			cim1a.set(x);
-			cim2a.set(x);
-			cim3a.set(x);
-			cim4a.set(x);
-		}
-		/*
-		while(true){
-			cim1a.set(x);
-			cim2a.set(x);
-			cim3a.set(x);
-			cim4a.set(x);
-		}
-		*/
 	}
 	
 	void rotate(double rotation){
 		
-		s.gyroFeed(true);
-		if(rotation<0){
-			while(s.gyroFeed(false)>rotation){
-				
-				cim1a.set(-0.3);
-				cim2a.set(-0.3);
-				cim3a.set(-0.3);
-				cim4a.set(-0.3);
-			}
-		}else if(rotation>0){
-			while(s.gyroFeed(false)<rotation){
-				//if(s.gyroFeed(false)<)
-				cim1a.set(0.3);
-				cim2a.set(0.3);
-				cim3a.set(0.6);
-				cim4a.set(0.6);
-			}
-		}
-		
 	}
+	
 	//orient is current orientation
 	void autoDrive(double[] path) {
 		boolean running = true;

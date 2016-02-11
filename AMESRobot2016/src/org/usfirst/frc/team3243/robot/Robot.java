@@ -32,13 +32,12 @@ public class Robot extends IterativeRobot {
     SendableChooser chooser;
     InputManager IM;
     DriveSystem DS;
-    Sensors S;
     RobotMap RM;
     EncoderWheel EW;
     EncoderWheel EWA;
     AStarPathfinding AS;
     GameArm GA;
-    Timer t;
+    Gyro G;
     //Grabber G;
     double degree = 90;
     double distance;
@@ -60,12 +59,11 @@ public class Robot extends IterativeRobot {
         IM = new InputManager();
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
-        S = new Sensors(true);
-        DS = new DriveSystem(S, EW, EWA, true);
+        G = new Gyro();
+        DS = new DriveSystem(G, EW, EWA, true);
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
-        t = new Timer();
         
     }
     
@@ -83,25 +81,21 @@ public class Robot extends IterativeRobot {
 //		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
 		pathStep = 0;
-		S.gyroFeed(true);
     }
 
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-    	//DS.autoDrive(AS.start());
-    	//grip.getNumberArray("FindBoulder/area",double[]) to get contour areas
     	switch(autoSelected) {
     	case customAuto:
         //Put custom auto code here   
             break;
     	case defaultAuto:
     	default:
-    		//DS.moveDistance(5,0.3);
-    		if(S.gyroFeed(false)<degree){
+    		//if(S.gyroFeed(false)<degree){
     			DS.rotate(degree);
-    		}
+    		//}
     		DS.stop();
     		
     	//Put default auto code here
@@ -117,27 +111,6 @@ public class Robot extends IterativeRobot {
     //	if (!DS.isPortDriving()) {//If not driving under port door
     		DS.quickdrive(IM.input());
     //	}
-    		//Weird things involving rotation: robot crashes and code "disappears" for 
-    	/*if (IM.move.getRawButton(5)) {
-    		DS.rotate(-30.);
-    	}
-    	if (IM.move.getRawButton(6)) {
-    		DS.rotate(30.);
-    	}
-    	if (IM.move.getRawButton(7)) {
-    		DS.rotate(-45.);
-    	}
-    	if (IM.move.getRawButton(8)) {
-    		DS.rotate(45.);
-    	}*/
-    		
-    	S.gyroFeed(IM.move.getRawButton(4));
-    	//EW.getCount(false);
-    	//if (IM.game.getRawButton(4)) {
-    	//	DS.startPortDrive();
-    	//}
-    	//DS.updatePortDrive(GA);//Call regardless of whether we're actually driving under the port door.
-    	
     }
     
     /**
