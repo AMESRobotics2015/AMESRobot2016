@@ -60,12 +60,12 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
-        /*
+        
         cam = CameraServer.getInstance();
         cam.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
-        cam.startAutomaticCapture("cam0");
-        */
+        cam.startAutomaticCapture("cam1");
+        
         IM = new InputManager();
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
@@ -109,7 +109,13 @@ public class Robot extends IterativeRobot {
     	    A.Step();
     	    A.stepNum();
     	    //Do it.
-    	    //DS.quickdrive(A.Step());
+    	    if(A.stepNum()<3){
+    	    	DS.quickdrive(A.Step());
+    	    }else{
+    	    	//System.out.println("Nope");
+    	    	DS.stop();
+    	    }
+    	    
     	    //Put default auto code here
     	    break;
     	    }
