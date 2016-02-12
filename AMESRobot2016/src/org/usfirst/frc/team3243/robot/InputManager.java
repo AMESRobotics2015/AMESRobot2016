@@ -18,11 +18,11 @@ int suckIn = 0, frontOrBack = 0;
 * @return
 */
 double[] input() {
-in[0] = ramp(deadZone(move.getRawAxis(1)));
-in[1] = ramp(deadZone(move.getRawAxis(3)));
-System.out.println(in[0]);
-System.out.println(in[1]);
-return in;
+	in[0] = ramp(deadZone(move.getRawAxis(1)));
+	in[1] = ramp(deadZone(move.getRawAxis(3)));
+	System.out.println(in[0]);
+	System.out.println(in[1]);
+	return in;
 }
 
 /**
@@ -47,28 +47,6 @@ return input;
 double ramp(double input) {
 input = Math.pow(input, 3);
 return input;
-}
-
-
-/**
-* Read button presses as user input - grabber.
-*/
-
-public int grabber() {
-
-if(move.getRawButton(7/*controller pin*/))
-{
-suckIn++;
-}
-return suckIn;
-}
-
-public int switchCam() {
-if(move.getRawButton(2/*controller pin*/))
-{
-frontOrBack++;
-}
-return frontOrBack;
 }
 
 /**

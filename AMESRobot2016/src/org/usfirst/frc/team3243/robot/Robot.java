@@ -40,6 +40,7 @@ public class Robot extends IterativeRobot {
     GameArm GA;
     Gyro G;
     Auto A;
+    Grabber GB;
     CameraServer cam;
     //Grabber G;
     double degree = 90;
@@ -64,18 +65,18 @@ public class Robot extends IterativeRobot {
         cam = CameraServer.getInstance();
         cam.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
-        cam.startAutomaticCapture("cam1");
+        cam.startAutomaticCapture("cam0");
         
         IM = new InputManager();
         EW = new EncoderWheel(1,2);
         EWA = new EncoderWheel(3,4);
         G = new Gyro();
-        DS = new DriveSystem(EW, EWA, true);
+        DS = new DriveSystem(EW, EWA, false);
         RM = new RobotMap();
         AS = new AStarPathfinding();
         GA = new GameArm();
         A = new Auto(DS,G);
-        
+        GB = new Grabber();
     }
     
 	/**
@@ -126,9 +127,9 @@ public class Robot extends IterativeRobot {
      * Press the y button to reset the gyro value; in other words, set the direction the robot is currently facing as 0
      * */
     public void teleopPeriodic() {
-    //	if (!DS.isPortDriving()) {//If not driving under port door
-    		DS.quickdrive(IM.input());
-    //	}
+    	//DS.quickdrive(IM.input());
+    	DS.drive(IM.input());
+    	GB.pullIn(IM);
     }
     
     /**

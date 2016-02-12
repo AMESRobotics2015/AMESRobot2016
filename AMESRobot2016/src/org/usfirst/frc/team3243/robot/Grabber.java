@@ -15,7 +15,7 @@ void pullIn(InputManager IM){
 	if(IM.game.getRawButton(2)){
 		cimBall.set(0.3);
 	}else if(IM.game.getRawButton(3)){
-		cimBall.set(-1);
+		cimBall.set(-.4);
 	}else{
 		cimBall.set(0);
 	}
@@ -28,7 +28,7 @@ void pullIn(InputManager IM){
 		}else cimBall.set(0);
 	}*/
 	
-	public void doGrab (int grabSpeed) {
+	public void doGrab (double grabSpeed) {
 		//limitswitch.get();
 		cimBall.set(grabSpeed);
 	}
