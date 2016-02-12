@@ -16,6 +16,6 @@ public class RobotMap {
 	static Encoder rotations;
 	static double rotationFactor = 1;
 	double x = 0;
-	double autoSpeed = 0.6;
+	double autoSpeed = 0.3;
 	
 }

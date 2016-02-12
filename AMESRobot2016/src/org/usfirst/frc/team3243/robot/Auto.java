@@ -5,9 +5,9 @@ public class Auto {
 	DriveSystem D;
 	Gyro G;
 	RobotMap r;
-	int step = 0;
 	double[] rotate = new double[4];
 	double angleRotate;
+	int step = 0;
 	public Auto(DriveSystem d, Gyro g){
 		D = d;
 		G = g;
@@ -73,7 +73,7 @@ public class Auto {
 	}
 	
 	void rotateInterface(double angle){
-		//angle = update() - angle;
+		angle = angle-update();
 		if(angle>0){
 			rotate[0]=-r.autoSpeed;
 			rotate[1]=r.autoSpeed;
