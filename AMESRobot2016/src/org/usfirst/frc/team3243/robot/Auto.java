@@ -45,10 +45,18 @@ public class Auto {
 		}
 	
 	void stepNum(){
-		if(update()<angleRotate-5 && update()>angleRotate+5){
-			step++;
+		//System.out.println(angleRotate);
+		System.out.println(update());
+		double a = angleRotate + 1;
+		double b = angleRotate - 1;
+
+		if(update()<a && update()>b){
+		step++;
+		//System.out.println("Here");
 		}
+
 		System.out.println(step);
+
 	}
 	
 	public double[] Step(){
@@ -64,15 +72,11 @@ public class Auto {
 	
 	void rotateInterface(double angle){
 		if(angle>0){
-			rotate[0]=r.autoSpeed;
-			rotate[1]=r.autoSpeed;
-			rotate[2]=r.autoSpeed;
-			rotate[3]=r.autoSpeed;
-		}else if(angle<0){
 			rotate[0]=-r.autoSpeed;
+			rotate[1]=r.autoSpeed;
+		}else if(angle<0){
+			rotate[0]=r.autoSpeed;
 			rotate[1]=-r.autoSpeed;
-			rotate[2]=-r.autoSpeed;
-			rotate[3]=-r.autoSpeed;
 		}
 	}
 }

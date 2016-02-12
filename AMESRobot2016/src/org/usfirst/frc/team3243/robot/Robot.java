@@ -101,22 +101,18 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {
     	switch(autoSelected) {
     	case customAuto:
-        //Put custom auto code here   
-            break;
+    		//Put custom auto code here   
+    		break;
     	case defaultAuto:
-    	default:
-    		//Update functionality
-    		A.update();
-    		//Get step we're on.
-    		A.stepNum();
-    		//Do it.
-    		//DS.quickdrive(A.Step());
-    		//Then stop.
-    		DS.stop();
-    		
-    	//Put default auto code here
-            break;
-    	}
+    	    default:
+    	    //Get step we're on and check if we need to move on.
+    	    A.Step();
+    	    A.stepNum();
+    	    //Do it.
+    	    //DS.quickdrive(A.Step());
+    	    //Put default auto code here
+    	    break;
+    	    }
     }
 
     /**
@@ -141,9 +137,9 @@ public class Robot extends IterativeRobot {
     		}
     	}
     	if(change){
-    		camx = "cam0";
-    	}else if(!change){
     		camx = "cam1";
+    	}else if(!change){
+    		camx = "cam2";
     	}
     	cam.startAutomaticCapture(camx);
     }
