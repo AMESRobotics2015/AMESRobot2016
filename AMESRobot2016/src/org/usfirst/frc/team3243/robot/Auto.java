@@ -7,7 +7,7 @@ public class Auto {
 	RobotMap r;
 	double[] rotate = new double[4];
 	double angleRotate;
-	int step = 0;
+	int step;
 	public Auto(DriveSystem d, Gyro g){
 		D = d;
 		G = g;
