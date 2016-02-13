@@ -106,6 +106,7 @@ public class Robot extends IterativeRobot {
     		break;
     	case defaultAuto:
     	    default:
+    	    //Get info here once per iteration.
     	    //Get step we're on and check if we need to move on.
     	    A.Step();
     	    A.stepNum();
